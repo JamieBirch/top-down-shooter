@@ -1,0 +1,34 @@
+{
+    "name": "InputControls",
+    "maps": [
+        {
+            "name": "Action_map",
+            "id": "07346f0c-1b07-4717-870c-65a12d94315b",
+            "actions": [
+                {
+                    "name": "Fire1",
+                    "type": "Button",
+                    "id": "2fa22e43-759e-4afc-9bd8-452ef6246956",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0e6f6f6a-0890-4e34-9036-6c267c79b152",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
