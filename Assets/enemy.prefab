@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6235665852966316971}
   - component: {fileID: 6235665852966316981}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: alive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6235665853769451123}
   - component: {fileID: 6235665853769451134}
   - component: {fileID: 6235665853769451133}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6235665854087208826}
   - component: {fileID: 6235665854087208825}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: dead
   m_TagString: Untagged
   m_Icon: {fileID: 0}

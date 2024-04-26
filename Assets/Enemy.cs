@@ -54,6 +54,11 @@ public class Enemy : MonoBehaviour
     {
         Die();
     }
+    
+    public void GetHit()
+    {
+        Die();
+    }
 
     private void Die()
     {
