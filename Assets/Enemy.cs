@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     private bool isAlive = true;
     public GameObject spriteAlive;
     public GameObject spriteDead;
+    public BoxCollider2D collider;
     
     public Transform[] patrolWaypoints;
     private int waypointIndex = 0;
@@ -66,5 +67,6 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy is Dead");
         spriteAlive.SetActive(false);
         spriteDead.SetActive(true);
+        collider.enabled = false;
     }
 }

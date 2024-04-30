@@ -7,9 +7,15 @@ public class Bullet : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D col)
     {
+        GameObject colGameObject = col.gameObject;
+        Player player;
+        if (colGameObject.TryGetComponent<Player>(out player))
+        {
+            return;
+        }
+        
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
 
-        GameObject colGameObject = col.gameObject;
         Enemy enemyComponent;
         if (colGameObject.TryGetComponent<Enemy>(out enemyComponent))
         {

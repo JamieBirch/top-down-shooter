@@ -135,6 +135,7 @@ MonoBehaviour:
   speed: 2
   spriteAlive: {fileID: 6235665852966316970}
   spriteDead: {fileID: 6235665854087208824}
+  collider: {fileID: 6235665853769451133}
   patrolWaypoints: []
 --- !u!50 &6235665853769451134
 Rigidbody2D:
