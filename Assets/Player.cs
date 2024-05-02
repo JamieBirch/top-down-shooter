@@ -38,10 +38,10 @@ public class Player : MonoBehaviour
     {
         heldWeapon = weapon;
         weapon.transform.position = weaponSlot.transform.position;
-        // weapon.GetComponent<Rigidbody>().rotation = Quaternion.identity;
+        weapon.GetComponent<Rigidbody2D>().rotation = 0f;
         weapon.gameObject.transform.SetParent(weaponSlot.transform);
-        // weapon.transform.rotation = Quaternion.identity;
-        // weapon.transform.rotation = 0f;
+
+        weapon.PickUp();
     }
 
     private bool StandingNearWeapon(out Weapon weaponComponent)

@@ -2510,6 +2510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381568660}
+  - component: {fileID: 381568661}
   m_Layer: 0
   m_Name: weaponSlot
   m_TagString: Untagged
@@ -2532,6 +2533,19 @@ Transform:
   m_Father: {fileID: 551294324}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &381568661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381568659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590d126af8f09254c9e09640a1f8df47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRB: {fileID: 551294326}
 --- !u!1 &423410062
 GameObject:
   m_ObjectHideFlags: 0
@@ -3400,22 +3414,6 @@ PrefabInstance:
     - target: {fileID: 7085511466506847584, guid: ec80e7650a300ae48aab70811d5329e6, type: 3}
       propertyPath: m_Name
       value: weapon_pistol
-      objectReference: {fileID: 0}
-    - target: {fileID: 7085511466506847589, guid: ec80e7650a300ae48aab70811d5329e6, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7085511466506847589, guid: ec80e7650a300ae48aab70811d5329e6, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7085511466506847589, guid: ec80e7650a300ae48aab70811d5329e6, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7085511466506847589, guid: ec80e7650a300ae48aab70811d5329e6, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7085511466506847591, guid: ec80e7650a300ae48aab70811d5329e6, type: 3}
       propertyPath: m_RootOrder
