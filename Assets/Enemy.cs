@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour
     public GameObject spriteAlive;
     public GameObject spriteDead;
     public BoxCollider2D collider;
-    
+
+    public GameObject weapon;
     public Transform[] patrolWaypoints;
     private int waypointIndex = 0;
 

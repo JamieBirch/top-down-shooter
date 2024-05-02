@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    public Transform shootingPoint;
-    public GameObject bulletPrefab;
-    public bool holdingGun;
+    /*public Transform shootingPoint;
+    public GameObject bulletPrefab;*/
+    // public bool holdingGun;
     
-    public Transform attackPoint;
-    public float meleeAttackRange;
+    /*public Transform attackPoint;
+    public float meleeAttackRange;*/
 
-    public LayerMask enemyLayer;
+    // public LayerMask enemyLayer;
 
-    public float bulletForce = 20f;
+    // public float bulletForce = 20f;
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
@@ -28,9 +28,9 @@ public class Combat : MonoBehaviour
                 Hit();
             }
         }
-    }
+    }*/
 
-    private void Shoot()
+    /*private void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
@@ -51,5 +51,5 @@ public class Combat : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackPoint.position, meleeAttackRange);
-    }
+    }*/
 }

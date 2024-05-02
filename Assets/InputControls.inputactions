@@ -6,9 +6,18 @@
             "id": "07346f0c-1b07-4717-870c-65a12d94315b",
             "actions": [
                 {
-                    "name": "Fire1",
+                    "name": "LMB",
                     "type": "Button",
                     "id": "2fa22e43-759e-4afc-9bd8-452ef6246956",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RMB",
+                    "type": "Button",
+                    "id": "ad34fd4f-8cdb-4f34-9adf-1932c055334f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -23,7 +32,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire1",
+                    "action": "LMB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7da111f-21d3-42be-aa77-365f8dd7dc49",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RMB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
