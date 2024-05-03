@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
 
     public Weapon heldWeapon;
     
+    public float fistsAttackRange;
+    public LayerMask enemyLayer;
+    
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -85,8 +88,12 @@ public class Player : MonoBehaviour
 
     private void AttackWithFists()
     {
-        //TODO implement fists as melee weapon 
-        throw new System.NotImplementedException();
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, fistsAttackRange, enemyLayer);
+        foreach (Collider2D hitEnemy in hitEnemies)
+        {
+            hitEnemy.GetComponent<Enemy>().GetHit();
+            Debug.Log("we hit " + hitEnemy.name + " with fists");
+        }
     }
 
     public void TakeBullet()

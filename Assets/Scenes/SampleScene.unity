@@ -2916,6 +2916,10 @@ MonoBehaviour:
   weaponPickupRange: 0.5
   weaponSlot: {fileID: 381568659}
   heldWeapon: {fileID: 0}
+  fistsAttackRange: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &652961922
 GameObject:
   m_ObjectHideFlags: 0
