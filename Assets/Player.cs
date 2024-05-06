@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         {
             if (heldWeapon != null)
             {
-                DropWeapon();
+                ThrowWeapon();
             }
             else
             {
@@ -39,12 +39,16 @@ public class Player : MonoBehaviour
 
     private void PickupWeapon(Weapon weapon)
     {
+        if (weapon.IsHeld())
+        {
+            return;
+        }
         heldWeapon = weapon;
         weapon.transform.position = weaponSlot.transform.position;
         weapon.gameObject.transform.SetParent(weaponSlot.transform);
         weapon.rb.simulated = false;
         weapon.transform.rotation = new Quaternion(0,0,0, 0);
-        
+        heldWeapon.PickUp();
     }
 
     private bool StandingNearWeapon(out Weapon weaponComponent)
@@ -66,11 +70,11 @@ public class Player : MonoBehaviour
         return weaponComponent != null;
     }
 
-    private void DropWeapon()
+    private void ThrowWeapon()
     {
         //TODO
         heldWeapon.gameObject.transform.SetParent(null);
-        heldWeapon.Drop();
+        heldWeapon.Throw();
         heldWeapon = null;
     }
 
