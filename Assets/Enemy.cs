@@ -89,6 +89,13 @@ public class Enemy : MonoBehaviour
     {
         Die();
     }
+    
+    public void GetHitByFist()
+    {
+        beStunned();
+        //TODO: deal damage
+        // Die();
+    }
 
     public void beStunned()
     {

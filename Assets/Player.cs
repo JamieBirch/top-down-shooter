@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, fistsAttackRange, enemyLayer);
         foreach (Collider2D hitEnemy in hitEnemies)
         {
-            hitEnemy.GetComponent<Enemy>().GetHit();
+            hitEnemy.GetComponent<Enemy>().GetHitByFist();
             Debug.Log("we hit " + hitEnemy.name + " with fists");
         }
     }
