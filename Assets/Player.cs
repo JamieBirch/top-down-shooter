@@ -41,10 +41,10 @@ public class Player : MonoBehaviour
     {
         heldWeapon = weapon;
         weapon.transform.position = weaponSlot.transform.position;
-        weapon.GetComponent<Rigidbody2D>().rotation = 0f;
         weapon.gameObject.transform.SetParent(weaponSlot.transform);
-
-        weapon.PickUp();
+        weapon.rb.simulated = false;
+        weapon.transform.rotation = new Quaternion(0,0,0, 0);
+        
     }
 
     private bool StandingNearWeapon(out Weapon weaponComponent)
