@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -13,9 +14,27 @@ public class Player : MonoBehaviour
     
     public float fistsAttackRange;
     public LayerMask enemyLayer;
-    
+
     void Update()
     {
+        
+        if (Input.GetKey("r"))
+        {
+            if (isAlive)
+            {
+                return;
+            }
+            else
+            {
+                ReloadLevel();
+            }
+        }
+
+        if (!isAlive)
+        {
+            return;
+        }
+        
         if (Input.GetButtonDown("Fire1"))
         {
             Attack();
@@ -35,6 +54,11 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void PickupWeapon(Weapon weapon)
@@ -116,5 +140,10 @@ public class Player : MonoBehaviour
         Debug.Log("Player is Dead");
         spriteAlive.SetActive(false);
         spriteDead.SetActive(true);
+    }
+
+    public bool isDead()
+    {
+        return !isAlive;
     }
 }

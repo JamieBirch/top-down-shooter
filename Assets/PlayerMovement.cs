@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<Player>().isDead())
+        {
+            return;
+        }
+        
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -21,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
     
     void FixedUpdate()
     {
+        if (GetComponent<Player>().isDead())
+        {
+            return;
+        }
+        
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
         Vector2 lookDir = mousePosition - rb.position;
