@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,6 +14,10 @@ public class Enemy : MonoBehaviour
     public GameObject weaponSlot;
     public GameObject weaponPrefab;
     public Weapon weapon;
+
+    public float stunTimeout;
+    public float stunCountdown;
+    
     public Transform[] patrolWaypoints;
     private int waypointIndex = 0;
 
@@ -42,10 +44,17 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (stunCountdown <= 0)
+        {
+            isStunned = false;
+            SetSprite(EnemyState.alive);
+        }
         if (isStunned)
         {
+            stunCountdown -= Time.deltaTime;
             return;
         }
+        
         if (patrolWaypoints.Length != 0 && isAlive)
         {
             Vector3 dir = target.position - transform.position;
@@ -81,8 +90,10 @@ public class Enemy : MonoBehaviour
         Die();
     }
 
-    private void beStunned()
+    public void beStunned()
     {
+        stunCountdown = stunTimeout;
+        
         if (weapon != null)
         {
             DropWeapon();

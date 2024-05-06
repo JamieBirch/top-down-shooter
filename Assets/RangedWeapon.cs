@@ -19,7 +19,12 @@ public class RangedWeapon : Weapon
     {
         Shoot();
     }
-    
+
+    public override void HitEnemyWhenThrown(Enemy enemyComponent)
+    {
+        enemyComponent.beStunned();
+    }
+
     private void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);

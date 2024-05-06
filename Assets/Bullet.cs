@@ -15,8 +15,7 @@ public class Bullet : MonoBehaviour
         
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
 
-        Enemy enemyComponent;
-        if (colGameObject.TryGetComponent<Enemy>(out enemyComponent))
+        if (colGameObject.TryGetComponent<Enemy>(out var enemyComponent))
         {
             enemyComponent.TakeBullet();
         }

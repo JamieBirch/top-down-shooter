@@ -144,6 +144,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6235665853769451123, guid: 8129d9af66647a043b246867f3b9248c, type: 3}
+      propertyPath: stunTimeout
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235665853769451123, guid: 8129d9af66647a043b246867f3b9248c, type: 3}
       propertyPath: weaponPrefab
       value: 
       objectReference: {fileID: 7085511466506847584, guid: ec80e7650a300ae48aab70811d5329e6, type: 3}

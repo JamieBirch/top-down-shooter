@@ -10,7 +10,13 @@ public class MeleeWeapon : Weapon
     {
         Hit();
     }
-    
+
+    public override void HitEnemyWhenThrown(Enemy enemyComponent)
+    {
+        //TODO:
+        throw new System.NotImplementedException();
+    }
+
     private void Hit()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, meleeAttackRange, enemyLayer);
