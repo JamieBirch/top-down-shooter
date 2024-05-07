@@ -2,6 +2,7 @@
 
 public abstract class Weapon : MonoBehaviour
 {
+    public float attackRange;
     public Rigidbody2D rb;
     public float dropForce;
 

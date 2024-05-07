@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a491fe244e6a44d8545392c44f3bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fov: {fileID: 4156427527169871334}
   speed: 2
   spriteAlive: {fileID: 6235665852966316970}
   spriteStunned: {fileID: 4268417550462267150}
@@ -258,7 +259,7 @@ MonoBehaviour:
   weaponSlot: {fileID: 4431182405271427214}
   weaponPrefab: {fileID: 0}
   weapon: {fileID: 0}
-  stunTimeout: 0
+  stunTimeout: 1
   stunCountdown: 0
   patrolWaypoints: []
 --- !u!50 &6235665853769451134

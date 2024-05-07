@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         GameObject colGameObject = col.gameObject;
-        if (colGameObject.TryGetComponent<Player>(out _) || colGameObject.TryGetComponent<Weapon>(out _))
+        if (colGameObject.TryGetComponent<Weapon>(out _))
         {
             return;
         }
@@ -18,6 +18,11 @@ public class Bullet : MonoBehaviour
         if (colGameObject.TryGetComponent<Enemy>(out var enemyComponent))
         {
             enemyComponent.TakeBullet();
+        }
+        
+        if (colGameObject.TryGetComponent<Player>(out var playerComponent))
+        {
+            playerComponent.TakeBullet();
         }
 
         Destroy(effect, 5f);

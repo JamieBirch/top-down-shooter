@@ -2,7 +2,7 @@
 
 public class MeleeWeapon : Weapon
 {
-    public float meleeAttackRange;
+    // public float meleeAttackRange;
     
     public LayerMask enemyLayer;
 
@@ -19,7 +19,7 @@ public class MeleeWeapon : Weapon
 
     private void Hit()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, meleeAttackRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
 
         foreach (Collider2D hitEnemy in hitEnemies)
         {

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public FieldOfView fov;
+    
     public float speed;
     
     private bool isAlive = true;
@@ -44,7 +46,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stunCountdown <= 0)
+        if (!isAlive)
+        {
+            return;
+        }
+        
+        if (isStunned && stunCountdown <= 0)
         {
             isStunned = false;
             SetSprite(EnemyState.alive);
@@ -54,8 +61,28 @@ public class Enemy : MonoBehaviour
             stunCountdown -= Time.deltaTime;
             return;
         }
-        
-        if (patrolWaypoints.Length != 0 && isAlive)
+
+        if (fov.canSeePlayer && !fov.player.GetComponent<Player>().isDead())
+        {
+            if (weapon != null)
+            {
+                float distanceToPlayer = Vector2.Distance(transform.position, fov.player.transform.position);
+                if (weapon.attackRange > distanceToPlayer)
+                {
+                    weapon.Attack();
+                }
+                else
+                {
+                    //get closer
+                    target = fov.player.transform;
+                }
+            }
+            else
+            {
+                //attack with fists
+                //TODO
+            }
+        } else if (patrolWaypoints.Length != 0 && isAlive)
         {
             Vector3 dir = target.position - transform.position;
             transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
