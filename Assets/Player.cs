@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     private bool isAlive = true;
     public GameObject spriteAlive;
     public GameObject spriteDead;
+    
+    public GameObject deathCanvas;
 
     public float weaponPickupRange;
     public GameObject weaponSlot;
@@ -140,6 +142,8 @@ public class Player : MonoBehaviour
         Debug.Log("Player is Dead");
         spriteAlive.SetActive(false);
         spriteDead.SetActive(true);
+        
+        deathCanvas.SetActive(true);
     }
 
     public bool isDead()
