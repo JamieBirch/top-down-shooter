@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     public float stunCountdown;
     
     public Transform[] patrolWaypoints;
+    public Transform defaultPosition;
     private int waypointIndex = 0;
 
     private Transform target;
@@ -29,6 +30,8 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         SetSprite(EnemyState.alive);
+        defaultPosition = transform;
+        
         if (patrolWaypoints.Length != 0)
         {
             target = patrolWaypoints[0];
@@ -103,7 +106,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            target = null;
+            target = defaultPosition;
         }
 
         if (target != null)
@@ -224,5 +227,10 @@ public class Enemy : MonoBehaviour
         alive,
         stunned,
         dead
+    }
+
+    public void GETKNIFED()
+    {
+        Die();
     }
 }

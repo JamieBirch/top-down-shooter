@@ -85,6 +85,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  hitEffect: {fileID: 4425983472779901098, guid: cc09f4a75d0ea1542b5d40e39c47b3f9, type: 3}
 --- !u!61 &4386711680722508524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.15
+  m_Mass: 0.05
   m_LinearDrag: 15
   m_AngularDrag: 0.05
   m_GravityScale: 0
