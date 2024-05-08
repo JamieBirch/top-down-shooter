@@ -157,11 +157,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6235665853769451132, guid: 8129d9af66647a043b246867f3b9248c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.47
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 6235665853769451132, guid: 8129d9af66647a043b246867f3b9248c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.41
+      value: 4.56
       objectReference: {fileID: 0}
     - target: {fileID: 6235665853769451132, guid: 8129d9af66647a043b246867f3b9248c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 77502610}
   m_Layer: 8
   m_Name: Tilemap_base
-  m_TagString: Untagged
+  m_TagString: walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1118,11 +1118,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6235665853769451132, guid: 8129d9af66647a043b246867f3b9248c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.56
+      value: 8.309999
       objectReference: {fileID: 0}
     - target: {fileID: 6235665853769451132, guid: 8129d9af66647a043b246867f3b9248c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.58
+      value: 12.58
       objectReference: {fileID: 0}
     - target: {fileID: 6235665853769451132, guid: 8129d9af66647a043b246867f3b9248c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3021,7 +3021,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
 --- !u!50 &551294326
 Rigidbody2D:

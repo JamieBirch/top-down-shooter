@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public FieldOfView fov;
+    public Rigidbody2D rb;
     
     public float speed;
     
@@ -64,11 +65,14 @@ public class Enemy : MonoBehaviour
 
         if (fov.canSeePlayer && !fov.player.GetComponent<Player>().isDead())
         {
+            float distanceToPlayer = Vector2.Distance(transform.position, fov.player.transform.position);
             if (weapon != null)
             {
-                float distanceToPlayer = Vector2.Distance(transform.position, fov.player.transform.position);
                 if (weapon.attackRange > distanceToPlayer)
                 {
+                    Vector2 lookDir = (Vector2)fov.player.transform.position - rb.position;
+                    float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+                    rb.rotation = angle;
                     weapon.Attack();
                 }
                 else
@@ -80,18 +84,39 @@ public class Enemy : MonoBehaviour
             else
             {
                 //attack with fists
-                //TODO
+                if (1 > distanceToPlayer)
+                {
+                    FistAttack();
+                }
+                else
+                {
+                    //get closer
+                    target = fov.player.transform;
+                }
             }
-        } else if (patrolWaypoints.Length != 0 && isAlive)
+        } else if (patrolWaypoints.Length != 0)
         {
-            Vector3 dir = target.position - transform.position;
-            transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
             if (Vector3.Distance(transform.position, target.position) <= 0.2f)
             {
                 GetNextWaypoint();
             }
         }
+        else
+        {
+            target = null;
+        }
+
+        if (target != null)
+        {
+            Vector3 dir = target.position - transform.position;
+            transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        }
+    }
+
+    private void FistAttack()
+    {
+        //TODO
+        Debug.Log("enemy attacks with fists");
     }
 
     private void GetNextWaypoint()
@@ -160,6 +185,10 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy is Dead");
         SetSprite(EnemyState.dead);
         collider.enabled = false;
+        if (weapon != null)
+        {
+            DropWeapon();
+        }
     }
 
     private void SetSprite(EnemyState enemyState)
