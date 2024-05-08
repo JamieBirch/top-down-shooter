@@ -86,7 +86,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3701039938720068354, guid: 28f1e9946c332304eba01af49ab88b83, type: 3}
   bulletsMax: 5
   bulletsCurrent: 0
-  bulletForce: 20
+  bulletForce: 10
 --- !u!61 &7085511466506847588
 BoxCollider2D:
   m_ObjectHideFlags: 0

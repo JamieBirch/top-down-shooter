@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1398858310834508795, guid: 28f1e9946c332304eba01af49ab88b83, type: 3}
       propertyPath: m_Size.y
-      value: 0.36
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 1398858310834508795, guid: 28f1e9946c332304eba01af49ab88b83, type: 3}
       propertyPath: m_Offset.y
@@ -19,9 +19,17 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 7072c2987cb7723428a59bbfec54541e, type: 3}
+    - target: {fileID: 3701039938711929997, guid: 28f1e9946c332304eba01af49ab88b83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0015
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701039938711929997, guid: 28f1e9946c332304eba01af49ab88b83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.002
+      objectReference: {fileID: 0}
     - target: {fileID: 3701039938720068354, guid: 28f1e9946c332304eba01af49ab88b83, type: 3}
       propertyPath: m_Name
-      value: ump_bullet
+      value: ump_bullet Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3701039938720068357, guid: 28f1e9946c332304eba01af49ab88b83, type: 3}
       propertyPath: m_RootOrder
