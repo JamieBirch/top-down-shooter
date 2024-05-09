@@ -253,6 +253,7 @@ MonoBehaviour:
   fov: {fileID: 4156427527169871334}
   rb: {fileID: 6235665853769451134}
   speed: 2
+  HP: 5
   spriteAlive: {fileID: 6235665852966316970}
   spriteStunned: {fileID: 4268417550462267150}
   spriteDead: {fileID: 6235665854087208824}

@@ -6,7 +6,8 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rb;
     
     public float speed;
-    
+
+    public int HP;
     private bool isAlive = true;
     private bool isStunned = false;
     public GameObject spriteAlive;
@@ -51,6 +52,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (HP <= 0)
+        {
+            Die();
+        }
+        
         if (!isAlive)
         {
             return;
@@ -121,6 +127,7 @@ public class Enemy : MonoBehaviour
     {
         //TODO
         Debug.Log("enemy attacks with fists");
+        fov.player.GetComponent<Player>().GetHit();
     }
 
     private void GetNextWaypoint()
@@ -136,7 +143,7 @@ public class Enemy : MonoBehaviour
         target = patrolWaypoints[waypointIndex];
     }
 
-    public void TakeBullet()
+    /*public void TakeBullet()
     {
         Die();
     }
@@ -144,13 +151,17 @@ public class Enemy : MonoBehaviour
     public void GetHit()
     {
         Die();
+    }*/
+    
+    public void ReceiveDamage(int damage)
+    {
+        HP -= damage;
     }
     
     public void GetHitByFist()
     {
         beStunned();
-        //TODO: deal damage
-        // Die();
+        ReceiveDamage(1);
     }
 
     public void beStunned()

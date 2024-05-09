@@ -35,7 +35,7 @@ public class MeleeWeapon : Weapon
 
         foreach (Collider2D hitEnemy in hitEnemies)
         {
-            hitEnemy.GetComponent<Enemy>().GetHit();
+            hitEnemy.GetComponent<Enemy>().ReceiveDamage(5);
             Debug.Log("we hit " + hitEnemy.name);
             
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
