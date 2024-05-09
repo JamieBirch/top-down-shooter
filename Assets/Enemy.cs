@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     public float stunCountdown;
     
     public Transform[] patrolWaypoints;
+    //TODO: does not work = should be V3/V2
     public Transform defaultPosition;
     private int waypointIndex = 0;
 

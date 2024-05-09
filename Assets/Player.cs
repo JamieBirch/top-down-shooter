@@ -22,14 +22,15 @@ public class Player : MonoBehaviour
         
         if (Input.GetKey("r"))
         {
-            if (isAlive)
+            ReloadLevel();
+            /*if (isAlive)
             {
                 return;
             }
             else
             {
                 ReloadLevel();
-            }
+            }*/
         }
 
         if (!isAlive)
