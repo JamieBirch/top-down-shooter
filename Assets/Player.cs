@@ -45,15 +45,19 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Fire2"))
         {
-            if (heldWeapon != null)
+            if (StandingNearWeapon(out var weapon))
             {
-                ThrowWeapon();
+                if (heldWeapon != null)
+                {
+                    ThrowWeapon();
+                }
+                PickupWeapon(weapon);
             }
             else
             {
-                if (StandingNearWeapon(out var weapon))
+                if (heldWeapon != null)
                 {
-                    PickupWeapon(weapon);
+                    ThrowWeapon();
                 }
             }
         }
