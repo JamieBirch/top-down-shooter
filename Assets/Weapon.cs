@@ -11,6 +11,8 @@ public abstract class Weapon : MonoBehaviour
     public abstract void Attack();
 
     public abstract void HitEnemyWhenThrown(Enemy enemyComponent);
+    
+    public abstract int GetBulletCount();
 
     public void Throw()
     {
@@ -56,5 +58,6 @@ public abstract class Weapon : MonoBehaviour
             }
         }
     }
-    
+
+
 }

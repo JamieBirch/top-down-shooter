@@ -17,12 +17,21 @@ public class RangedWeapon : Weapon
 
     public override void Attack()
     {
-        Shoot();
+        if (bulletsCurrent > 0)
+        {
+            Shoot();
+            bulletsCurrent--;
+        }
     }
 
     public override void HitEnemyWhenThrown(Enemy enemyComponent)
     {
         enemyComponent.beStunned();
+    }
+
+    public override int GetBulletCount()
+    {
+        return bulletsCurrent;
     }
 
     private void Shoot()

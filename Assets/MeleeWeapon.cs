@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MeleeWeapon : Weapon
 {
@@ -21,6 +22,11 @@ public class MeleeWeapon : Weapon
         Destroy(effect, 5f);
         
         // throw new System.NotImplementedException();
+    }
+
+    public override int GetBulletCount()
+    {
+        return Int32.MaxValue;
     }
 
     private void Hit()

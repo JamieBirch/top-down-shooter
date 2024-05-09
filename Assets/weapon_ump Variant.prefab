@@ -112,6 +112,10 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7085511466506847590, guid: ec80e7650a300ae48aab70811d5329e6, type: 3}
+      propertyPath: bulletsMax
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085511466506847590, guid: ec80e7650a300ae48aab70811d5329e6, type: 3}
       propertyPath: attackRange
       value: 15
       objectReference: {fileID: 0}
