@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rb;
     
     public float speed;
+    public float fistAttackRange;
 
     public int HP;
     private bool isAlive = true;
@@ -94,7 +95,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 //attack with fists
-                if (1 > distanceToPlayer)
+                if (distanceToPlayer <= fistAttackRange)
                 {
                     FistAttack();
                 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public abstract class Weapon : MonoBehaviour
     public float dropForce;
 
     private bool isHeld = false;
+    public bool OnGround = true;
+    public float weaponThrowTimeout = 3f;
+    public float weaponThrowCountdown = 0f;
     
     public abstract void Attack();
 
@@ -14,22 +18,37 @@ public abstract class Weapon : MonoBehaviour
     
     public abstract int GetBulletCount();
 
+    private void Update()
+    {
+        if (weaponThrowCountdown > 0f)
+        {
+            weaponThrowCountdown -= Time.deltaTime;
+        }
+        else if (!OnGround && !isHeld)
+        {
+            OnGround = true;
+        }
+    }
+
     public void Throw()
     {
         rb.simulated = true;
         rb.AddForce(transform.up * dropForce, ForceMode2D.Impulse);
         isHeld = false;
+        weaponThrowCountdown = weaponThrowTimeout;
     }
     
     public void Drop()
     {
-        rb.simulated = true;
         isHeld = false;
+        rb.simulated = true;
+        weaponThrowCountdown = weaponThrowTimeout;
     }
 
     public void PickUp()
     {
         isHeld = true;
+        OnGround = false;
     }
     
     public bool IsHeld()
@@ -48,7 +67,7 @@ public abstract class Weapon : MonoBehaviour
 
         if (colGameObject.TryGetComponent<Enemy>(out var enemyComponent))
         {
-            if (enemyComponent.weapon == this)
+            if (enemyComponent.weapon == this || OnGround)
             {
                 return;
             }
