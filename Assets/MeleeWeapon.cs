@@ -7,6 +7,7 @@ public class MeleeWeapon : Weapon
     
     public LayerMask enemyLayer;
     public GameObject hitEffect;
+    public bool killsWhenThrown = false;
 
     public override void Attack()
     {
@@ -17,9 +18,16 @@ public class MeleeWeapon : Weapon
     {
         //TODO: different effect for different weapons
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        
-        enemyComponent.GETKNIFED();
-        Destroy(effect, 5f);
+
+        if (killsWhenThrown)
+        {
+            enemyComponent.GETKNIFED();
+            Destroy(effect, 5f);
+        }
+        else
+        {
+            enemyComponent.beStunned();
+        }
         
         // throw new System.NotImplementedException();
     }
