@@ -217,6 +217,11 @@ public class Enemy : MonoBehaviour
             DropWeapon();
         }
     }
+    
+    public bool IsAlive()
+    {
+        return isAlive;
+    }
 
     private void SetSprite(EnemyState enemyState)
     {
