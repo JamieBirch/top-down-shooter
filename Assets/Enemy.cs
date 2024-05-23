@@ -76,41 +76,10 @@ public class Enemy : MonoBehaviour
 
         if (fov.canSeePlayer && !fov.player.GetComponent<Player>().isDead())
         {
-            float distanceToPlayer = Vector2.Distance(transform.position, fov.player.transform.position);
-            if (weapon != null)
-            {
-                if (weapon.attackRange > distanceToPlayer)
-                {
-                    Vector2 lookDir = (Vector2)fov.player.transform.position - rb.position;
-                    float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-                    rb.rotation = angle;
-                    weapon.Attack();
-                }
-                else
-                {
-                    //get closer
-                    target = fov.player.transform;
-                }
-            }
-            else
-            {
-                //attack with fists
-                if (distanceToPlayer <= fistAttackRange)
-                {
-                    FistAttack();
-                }
-                else
-                {
-                    //get closer
-                    target = fov.player.transform;
-                }
-            }
+            AttackPlayer();
         } else if (patrolWaypoints.Length != 0)
         {
-            if (Vector3.Distance(transform.position, target.position) <= 0.2f)
-            {
-                GetNextWaypoint();
-            }
+            Patrol();
         }
         else
         {
@@ -121,6 +90,48 @@ public class Enemy : MonoBehaviour
         {
             Vector3 dir = target.position - transform.position;
             transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        }
+    }
+
+    private void Patrol()
+    {
+        if (Vector3.Distance(transform.position, target.position) <= 0.2f)
+        {
+            GetNextWaypoint();
+        }
+    }
+
+    public virtual void AttackPlayer()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, fov.player.transform.position);
+        if (weapon != null)
+        {
+            if (weapon.attackRange > distanceToPlayer)
+            {
+                //attack with ranged weapon
+                Vector2 lookDir = (Vector2)fov.player.transform.position - rb.position;
+                float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+                rb.rotation = angle;
+                weapon.Attack();
+            }
+            else
+            {
+                //get closer
+                target = fov.player.transform;
+            }
+        }
+        else
+        {
+            //attack with fists
+            if (distanceToPlayer <= fistAttackRange)
+            {
+                FistAttack();
+            }
+            else
+            {
+                //get closer
+                target = fov.player.transform;
+            }
         }
     }
 
