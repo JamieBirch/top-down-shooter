@@ -209,7 +209,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         isAlive = false;
-        Debug.Log("Enemy is Dead");
+        // Debug.Log("Enemy is Dead");
         SetSprite(EnemyState.dead);
         collider.enabled = false;
         if (weapon != null)
