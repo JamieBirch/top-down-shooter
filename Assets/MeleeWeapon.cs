@@ -34,7 +34,7 @@ public class MeleeWeapon : Weapon
 
     public override int GetBulletCount()
     {
-        return Int32.MaxValue;
+        return -1;
     }
 
     private void Hit()

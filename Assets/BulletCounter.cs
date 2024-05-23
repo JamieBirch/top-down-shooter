@@ -6,6 +6,7 @@ public class BulletCounter : MonoBehaviour
 {
     public Player player;
     public Text text;
+    public GameObject bulletsPanel;
 
 
     private void Update()
@@ -13,11 +14,19 @@ public class BulletCounter : MonoBehaviour
         Weapon playerHeldWeapon = player.heldWeapon;
         if (playerHeldWeapon != null)
         {
-            text.text = playerHeldWeapon.GetBulletCount().ToString();
+            if (playerHeldWeapon.GetBulletCount() >= 0)
+            {
+                bulletsPanel.SetActive(true);
+                text.text = playerHeldWeapon.GetBulletCount().ToString();
+            }
+            else
+            {
+                bulletsPanel.SetActive(false);
+            }
         }
         else
         {
-            text.text = "-";
+            bulletsPanel.SetActive(false);
         }
     }
 }
