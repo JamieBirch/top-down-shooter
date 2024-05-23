@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     public Camera cam;
+    public Animator animator;
 
     private Vector2 movement;
     private Vector2 mousePosition;
@@ -32,6 +33,14 @@ public class PlayerMovement : MonoBehaviour
         }
         
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (movement.magnitude > 0f)
+        {
+            animator.SetFloat("speed", 1f);
+        }
+        else
+        {
+            animator.SetFloat("speed", 0f);
+        }
 
         Vector2 lookDir = mousePosition - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;

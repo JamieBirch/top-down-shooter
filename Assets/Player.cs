@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public Animator animator;
+    
     private bool isAlive = true;
     public GameObject spriteAlive;
     public GameObject spriteDead;
@@ -123,6 +125,8 @@ public class Player : MonoBehaviour
 
     private void AttackWithFists()
     {
+        animator.SetTrigger("punch trigger");
+        
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, fistsAttackRange, enemyLayer);
         foreach (Collider2D hitEnemy in hitEnemies)
         {
