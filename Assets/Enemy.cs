@@ -172,8 +172,11 @@ public class Enemy : MonoBehaviour
     
     public void GetHitByFist()
     {
-        beStunned();
-        ReceiveDamage(1);
+        if (!isStunned)
+        {
+            beStunned();
+            ReceiveDamage(1);
+        }
     }
 
     public void beStunned()
@@ -222,6 +225,11 @@ public class Enemy : MonoBehaviour
     {
         return isAlive;
     }
+    
+    public bool IsStunned()
+    {
+        return isStunned;
+    }
 
     private void SetSprite(EnemyState enemyState)
     {
@@ -259,6 +267,11 @@ public class Enemy : MonoBehaviour
     }
 
     public void GETKNIFED()
+    {
+        Die();
+    }
+
+    public void GetFinished()
     {
         Die();
     }

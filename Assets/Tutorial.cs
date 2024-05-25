@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
+    public Door[] doors;
+    
     public GameObject pipe;
     public GameObject gunshot;
 
@@ -40,6 +42,7 @@ public class Tutorial : MonoBehaviour
         {
             case 0:
             {
+                doors[0].Open();
                 CheckIfMoved();
                 break;
             }
@@ -55,6 +58,7 @@ public class Tutorial : MonoBehaviour
             }
             case 3:
             {
+                doors[1].Open();
                 CheckIfTookPipe();
                 break;
             }
@@ -70,6 +74,7 @@ public class Tutorial : MonoBehaviour
             }
             case 6:
             {
+                doors[2].Open();
                 CheckIfTookGunshot();
                 break;
             }

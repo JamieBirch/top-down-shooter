@@ -35,6 +35,11 @@ public class Player : MonoBehaviour
             }*/
         }
 
+        if (Input.GetKey("space"))
+        {
+            FinishEnemy();
+        }
+
         if (!isAlive)
         {
             return;
@@ -132,6 +137,19 @@ public class Player : MonoBehaviour
         {
             hitEnemy.GetComponent<Enemy>().GetHitByFist();
             Debug.Log("we hit " + hitEnemy.name + " with fists");
+        }
+    }
+
+    private void FinishEnemy()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, fistsAttackRange, enemyLayer);
+        foreach (Collider2D hitEnemy in hitEnemies)
+        {
+            if (hitEnemy.GetComponent<Enemy>().IsStunned())
+            {
+                hitEnemy.GetComponent<Enemy>().GetFinished();
+            } 
+            // Debug.Log("we hit " + hitEnemy.name + " with fists");
         }
     }
 

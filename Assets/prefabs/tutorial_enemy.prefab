@@ -7,6 +7,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1554055354772715478, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554055354772715478, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554055354772715478, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680897686020882145, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772213298774759782, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1517961066, guid: fdaf9325d5b99b345a7382a6b687b956, type: 3}
+    - target: {fileID: 5224606671012023957, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224606671012023957, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224606671012023957, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224606671012023958, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -248912961, guid: fdaf9325d5b99b345a7382a6b687b956, type: 3}
+    - target: {fileID: 5224606671012023959, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5224606671633799059, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -55,6 +95,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: tutorial_enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5224606672109926980, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224606672109926980, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224606672109926980, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224606672109927002, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2136792652, guid: 9940f7a8cd206f54d8b1fa9709d279c8, type: 3}
     m_RemovedComponents:
     - {fileID: 5224606671633799068, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
@@ -113,7 +169,7 @@ MonoBehaviour:
   weaponSlot: {fileID: 4431182405271427214}
   weaponPrefab: {fileID: 0}
   weapon: {fileID: 0}
-  stunTimeout: 1
+  stunTimeout: 3
   stunCountdown: 0
   patrolWaypoints: []
   defaultPosition: {fileID: 0}
