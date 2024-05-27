@@ -5,7 +5,7 @@ public abstract class Weapon : MonoBehaviour
 {
     public float attackRange;
     public Rigidbody2D rb;
-    public float dropForce;
+    public float throwForce;
 
     private bool isHeld = false;
     public bool OnGround = true;
@@ -33,7 +33,7 @@ public abstract class Weapon : MonoBehaviour
     public void Throw()
     {
         rb.simulated = true;
-        rb.AddForce(transform.up * dropForce, ForceMode2D.Impulse);
+        rb.AddForce(transform.up * throwForce, ForceMode2D.Impulse);
         isHeld = false;
         weaponThrowCountdown = weaponThrowTimeout;
     }

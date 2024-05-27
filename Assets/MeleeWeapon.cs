@@ -41,13 +41,18 @@ public class MeleeWeapon : Weapon
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
 
-        foreach (Collider2D hitEnemy in hitEnemies)
+        if (hitEnemies.Length > 0)
         {
-            hitEnemy.GetComponent<Enemy>().ReceiveDamage(5);
-            Debug.Log("we hit " + hitEnemy.name);
+            SoundManager.PlaySound(SoundManager.Sound.melee_hit);
             
-            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            Destroy(effect, 5f);
+            foreach (Collider2D hitEnemy in hitEnemies)
+            {
+                hitEnemy.GetComponent<Enemy>().ReceiveDamage(5);
+                Debug.Log("we hit " + hitEnemy.name);
+            
+                GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+                Destroy(effect, 5f);
+            }
         }
     }
 }
