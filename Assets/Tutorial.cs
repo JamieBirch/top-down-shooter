@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
@@ -21,6 +20,11 @@ public class Tutorial : MonoBehaviour
 
     public int movementCounter = 0;
 
+    private void Awake()
+    {
+        SoundManager.PlaySoundTrack();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,8 @@ public class Tutorial : MonoBehaviour
         instructions.Add(6, "Время пострелять!");
         instructions.Add(7, "");
         instructions.Add(8, "");
+        
+        PerformOneTimeActions();
     }
 
     // Update is called once per frame
@@ -42,7 +48,8 @@ public class Tutorial : MonoBehaviour
         {
             case 0:
             {
-                doors[0].Open();
+                // doors[0].Open();
+                // enemies[0].Voice();
                 CheckIfMoved();
                 break;
             }
@@ -58,7 +65,8 @@ public class Tutorial : MonoBehaviour
             }
             case 3:
             {
-                doors[1].Open();
+                // doors[1].Open();
+                // enemies[1].Voice();
                 CheckIfTookPipe();
                 break;
             }
@@ -74,7 +82,8 @@ public class Tutorial : MonoBehaviour
             }
             case 6:
             {
-                doors[2].Open();
+                // doors[2].Open();
+                // enemies[2].Voice();
                 CheckIfTookGunshot();
                 break;
             }
@@ -98,7 +107,7 @@ public class Tutorial : MonoBehaviour
         int count = enemies.Count(enemy => enemy.IsAlive());
         if (count < num)
         {
-            currentStep++;
+            NextStep();
         }
     }
 
@@ -106,7 +115,7 @@ public class Tutorial : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            currentStep++;
+            NextStep();
         }
     }
 
@@ -114,7 +123,7 @@ public class Tutorial : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            currentStep++;
+            NextStep();
         }
     }
 
@@ -127,7 +136,7 @@ public class Tutorial : MonoBehaviour
 
         if (movementCounter >= 4)
         {
-            currentStep++;
+            NextStep();
         }
     }
 
@@ -138,7 +147,7 @@ public class Tutorial : MonoBehaviour
         {
             if (player.heldWeapon.gameObject == gunshot)
             {
-                currentStep++;
+                NextStep();
             }
         }
     }
@@ -149,8 +158,64 @@ public class Tutorial : MonoBehaviour
         {
             if (player.heldWeapon.gameObject == pipe)
             {
-                currentStep++;
+                NextStep();
             }
         }
+    }
+
+    private void PerformOneTimeActions()
+    {
+        switch (currentStep)
+        {
+            case 0:
+            {
+                doors[0].Open();
+                enemies[0].Voice();
+                break;
+            }
+            case 1:
+            {
+                break;
+            }
+            case 2:
+            {
+                break;
+            }
+            case 3:
+            {
+                doors[1].Open();
+                enemies[1].Voice();
+                break;
+            }
+            case 4:
+            {
+                break;
+            }
+            case 5:
+            {
+                break;
+            }
+            case 6:
+            {
+                doors[2].Open();
+                enemies[2].Voice();
+                break;
+            }
+            case 7:
+            {
+                break;
+            }
+            case 8:
+            {
+                Debug.Log("tutorial finished?");
+                break;
+            }
+        }
+    }
+
+    private void NextStep()
+    {
+        currentStep++;
+        PerformOneTimeActions();
     }
 }

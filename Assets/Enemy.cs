@@ -209,7 +209,7 @@ public class Enemy : MonoBehaviour
         foundWeapon.transform.rotation = new Quaternion(0,0,180, 0);
     }
 
-    private void Die()
+    public virtual void Die()
     {
         isAlive = false;
         // Debug.Log("Enemy is Dead");
@@ -219,6 +219,11 @@ public class Enemy : MonoBehaviour
         {
             DropWeapon();
         }
+    }
+
+    public virtual void Voice()
+    {
+        
     }
     
     public bool IsAlive()
@@ -273,6 +278,7 @@ public class Enemy : MonoBehaviour
 
     public void GetFinished()
     {
+        SoundManager.PlaySound(SoundManager.Sound.finisher);
         Die();
     }
 }

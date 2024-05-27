@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 1.5
   rb: {fileID: 0}
-  dropForce: 5
+  throwForce: 20
   OnGround: 1
   weaponThrowTimeout: 3
   weaponThrowCountdown: 0
