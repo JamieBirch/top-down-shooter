@@ -173,6 +173,8 @@ MonoBehaviour:
   stunCountdown: 0
   patrolWaypoints: []
   defaultPosition: {fileID: 0}
+  bloodSpotPrefab: {fileID: 6136873832623499859, guid: ba6f91ea22e147442ad46dabea92dcaf, type: 3}
+  soundObject: {fileID: 0}
 --- !u!61 &6235665853769451133 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 5224606671633799058, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}

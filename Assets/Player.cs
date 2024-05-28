@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
     public Animator animator;
     public Rigidbody2D rb;
+    public GameObject bloodSpotPrefab;
     
     private bool isAlive = true;
     public GameObject spriteAlive;
@@ -220,6 +221,9 @@ public class Player : MonoBehaviour
         spriteDead.SetActive(true);
         
         deathCanvas.SetActive(true);
+        
+        GameObject bloodSpot = Instantiate(bloodSpotPrefab, transform.position, Quaternion.identity);
+        bloodSpot.GetComponent<BloodSpot>().PlayRandomAnimation();
     }
 
     public bool isDead()

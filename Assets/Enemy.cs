@@ -30,6 +30,9 @@ public class Enemy : MonoBehaviour
 
     private Transform target;
 
+    public GameObject bloodSpotPrefab;
+
+    
     private void Start()
     {
         SetSprite(EnemyState.alive);
@@ -219,6 +222,12 @@ public class Enemy : MonoBehaviour
         {
             DropWeapon();
         }
+        
+        GameObject bloodSpot = Instantiate(bloodSpotPrefab, transform.position, Quaternion.identity);
+        bloodSpot.GetComponent<BloodSpot>().PlayRandomAnimation();
+        /*Animator animator = bloodSpot.GetComponent<Animator>();
+        AnimationClip[] animationClips = animator.runtimeAnimatorController.animationClips;
+        animator.Play(animationClips[0].name);*/
     }
 
     public virtual void Voice()
