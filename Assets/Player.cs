@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public Animator animator;
+    public Rigidbody2D rb;
     
     private bool isAlive = true;
     public GameObject spriteAlive;
@@ -17,7 +18,9 @@ public class Player : MonoBehaviour
     public Weapon heldWeapon;
     
     public float fistsAttackRange;
+    public float fistsAttackAngle;
     public LayerMask enemyLayer;
+    public LayerMask wallLayer;
 
     void Update()
     {
@@ -121,6 +124,8 @@ public class Player : MonoBehaviour
         if (heldWeapon != null)
         {
             heldWeapon.Attack();
+            // Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            // rb.AddForce(-transform.forward * heldWeapon.weaponKickback, ForceMode2D.Impulse);
         }
         else
         {
@@ -130,14 +135,58 @@ public class Player : MonoBehaviour
 
     private void AttackWithFists()
     {
-        animator.SetTrigger("punch trigger");
         
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, fistsAttackRange, enemyLayer);
-        foreach (Collider2D hitEnemy in hitEnemies)
+
+        if (hitEnemies.Length > 0)
+        {
+            //currently for only 1 enemy
+            Transform target = hitEnemies[0].transform;
+            Vector2 directionToTarget = (target.position - transform.position).normalized;
+
+            if (Vector2.Angle(transform.up, directionToTarget) < fistsAttackAngle / 2)
+            {
+                float distanceToTarget = Vector2.Distance(transform.position, target.position);
+
+                if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, wallLayer))
+                {
+                    PunchEnemy(hitEnemies[0]);
+                    // canSeePlayer = true;
+                }
+                else
+                {
+                    PunchMiss();
+                }
+                
+            }
+            else
+            {
+                PunchMiss();
+            }
+        }
+        else
+        {
+            PunchMiss();
+        }
+        
+        /*foreach (Collider2D hitEnemy in hitEnemies)
         {
             hitEnemy.GetComponent<Enemy>().GetHitByFist();
             Debug.Log("we hit " + hitEnemy.name + " with fists");
-        }
+        }*/
+    }
+
+    private void PunchEnemy(Collider2D hitEnemy)
+    {
+        hitEnemy.GetComponent<Enemy>().GetHitByFist();
+        animator.SetTrigger("punch enemy");
+        SoundManager.PlaySound(SoundManager.Sound.fist_hit);
+    }
+    
+    private void PunchMiss()
+    {
+        animator.SetTrigger("punch miss");
+        SoundManager.PlaySound(SoundManager.Sound.fist_miss);
     }
 
     private void FinishEnemy()

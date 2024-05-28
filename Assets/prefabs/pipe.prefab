@@ -86,6 +86,10 @@ MonoBehaviour:
   OnGround: 1
   weaponThrowTimeout: 3
   weaponThrowCountdown: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  meleeAttackAngle: 90
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024

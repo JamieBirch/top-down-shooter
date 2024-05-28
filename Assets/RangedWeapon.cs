@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RangedWeapon : Weapon
 {
@@ -8,8 +7,8 @@ public class RangedWeapon : Weapon
     
     public int bulletsMax;
     public int bulletsCurrent;
-    public float bulletForce = 20f;
-
+    public float bulletForce;
+    
     private void Start()
     {
         bulletsCurrent = bulletsMax;
@@ -36,6 +35,7 @@ public class RangedWeapon : Weapon
 
     private void Shoot()
     {
+        SoundManager.PlaySound(SoundManager.Sound.shoot);
         GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(shootingPoint.up * bulletForce, ForceMode2D.Impulse);

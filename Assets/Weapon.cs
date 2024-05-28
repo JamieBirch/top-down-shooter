@@ -12,6 +12,10 @@ public abstract class Weapon : MonoBehaviour
     public float weaponThrowTimeout = 3f;
     public float weaponThrowCountdown = 0f;
     
+    public LayerMask wallLayer;
+    
+    // public float weaponKickback;
+    
     public abstract void Attack();
 
     public abstract void HitEnemyWhenThrown(Enemy enemyComponent);
@@ -47,6 +51,8 @@ public abstract class Weapon : MonoBehaviour
 
     public void PickUp()
     {
+        SoundManager.PlaySound(SoundManager.Sound.pickup_weapon);
+        
         isHeld = true;
         OnGround = false;
     }

@@ -20,14 +20,11 @@ public class Tutorial : MonoBehaviour
 
     public int movementCounter = 0;
 
-    private void Awake()
-    {
-        SoundManager.PlaySoundTrack();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.PlaySoundTrack();
+        
         instructions.Add(0, "WASD to move");
         instructions.Add(1, "врежь ему!");
         instructions.Add(2, "гаси бритого!");
