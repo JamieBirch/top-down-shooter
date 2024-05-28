@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public LayerMask enemyLayer;
     public LayerMask wallLayer;
 
+    private bool activeHandRight = true;
+
     void Update()
     {
         
@@ -179,15 +181,35 @@ public class Player : MonoBehaviour
 
     private void PunchEnemy(Collider2D hitEnemy)
     {
+        
         hitEnemy.GetComponent<Enemy>().GetHitByFist();
-        animator.SetTrigger("punch enemy");
         SoundManager.PlaySound(SoundManager.Sound.fist_hit);
+        if (activeHandRight)
+        {
+            animator.SetTrigger("punch enemy");
+            activeHandRight = false;
+        }
+        else
+        {
+            animator.SetTrigger("punch enemy left");
+            activeHandRight = true;
+        }
     }
     
     private void PunchMiss()
     {
-        animator.SetTrigger("punch miss");
         SoundManager.PlaySound(SoundManager.Sound.fist_miss);
+        
+        if (activeHandRight)
+        {
+            animator.SetTrigger("punch miss");
+            activeHandRight = false;
+        }
+        else
+        {
+            animator.SetTrigger("punch miss left");
+            activeHandRight = true;
+        }
     }
 
     private void FinishEnemy()
