@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,10 +6,12 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
+    public CameraFollow CameraFollow;
+    
     public Door[] doors;
     
     public GameObject pipe;
-    public GameObject gunshot;
+    public GameObject shotgun;
 
     public Enemy[] enemies;
     
@@ -142,7 +145,7 @@ public class Tutorial : MonoBehaviour
     {
         if (player.heldWeapon != null)
         {
-            if (player.heldWeapon.gameObject == gunshot)
+            if (player.heldWeapon.gameObject == shotgun)
             {
                 NextStep();
             }
@@ -166,12 +169,13 @@ public class Tutorial : MonoBehaviour
         {
             case 0:
             {
-                doors[0].Open();
-                enemies[0].Voice();
                 break;
             }
             case 1:
             {
+                StartCoroutine(ShowObject(enemies[0].transform));
+                doors[0].Open();
+                enemies[0].Voice();
                 break;
             }
             case 2:
@@ -180,6 +184,7 @@ public class Tutorial : MonoBehaviour
             }
             case 3:
             {
+                StartCoroutine(ShowObject(pipe.transform));
                 doors[1].Open();
                 enemies[1].Voice();
                 break;
@@ -190,6 +195,7 @@ public class Tutorial : MonoBehaviour
             }
             case 5:
             {
+                StartCoroutine(ShowObject(shotgun.transform));
                 break;
             }
             case 6:
@@ -214,5 +220,13 @@ public class Tutorial : MonoBehaviour
     {
         currentStep++;
         PerformOneTimeActions();
+    }
+
+    IEnumerator ShowObject(Transform go)
+    {
+        Transform prevTarget = CameraFollow.target;
+        CameraFollow.target = go;
+        yield return new WaitForSeconds(2);
+        CameraFollow.target = prevTarget;
     }
 }

@@ -4107,6 +4107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d846e1ffd154245a125f2a60b32d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraFollow: {fileID: 1196613535}
   doors:
   - {fileID: 1043097226}
   - {fileID: 296560331}
