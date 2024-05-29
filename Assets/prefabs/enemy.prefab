@@ -141,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 5224606671012023959}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5224606671633799059}
@@ -188,7 +188,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 91957360, guid: 39bbcf0c69c47b74ea412934aa966556, type: 3}
+  m_Sprite: {fileID: -1902912063, guid: fdaf9325d5b99b345a7382a6b687b956, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -266,6 +266,7 @@ MonoBehaviour:
   stunCountdown: 0
   patrolWaypoints: []
   defaultPosition: {fileID: 0}
+  bloodSpotPrefab: {fileID: 0}
 --- !u!50 &5224606671633799057
 Rigidbody2D:
   serializedVersion: 4

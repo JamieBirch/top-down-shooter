@@ -4113,7 +4113,7 @@ MonoBehaviour:
   - {fileID: 296560331}
   - {fileID: 1858985735}
   pipe: {fileID: 656298388}
-  gunshot: {fileID: 2082871629}
+  shotgun: {fileID: 2082871629}
   enemies:
   - {fileID: 545060516}
   - {fileID: 1112471098}
