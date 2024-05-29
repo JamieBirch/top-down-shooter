@@ -5,10 +5,12 @@ public class Door : MonoBehaviour
 {
     public bool isLocked;
     public Rigidbody2D rb;
+    public GameObject rotationPoint;
 
     public void Open()
     {
         isLocked = false;
+        rotationPoint.transform.Rotate(0f, 0f, 90f);
     }
 
     private void Update()
@@ -19,7 +21,7 @@ public class Door : MonoBehaviour
         }
         else
         {
-            rb.mass = 0.5f;
+            rb.mass = 5f;
         }
     }
 }

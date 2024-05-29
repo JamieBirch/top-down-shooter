@@ -165,11 +165,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 10
   rb: {fileID: 7085511466506847589}
-  throwForce: 20
+  throwForce: 100
   OnGround: 1
   weaponThrowTimeout: 3
   weaponThrowCountdown: 0
-  weaponKickback: 50
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
   shootingPoint: {fileID: 7085511465300950895}
   bulletPrefab: {fileID: 3701039938720068354, guid: 28f1e9946c332304eba01af49ab88b83, type: 3}
   bulletsMax: 5
@@ -213,7 +215,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.2
+  m_Mass: 1
   m_LinearDrag: 20
   m_AngularDrag: 20
   m_GravityScale: 0
