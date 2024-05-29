@@ -214,6 +214,10 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die()
     {
+        if (!isAlive)
+        {
+            return;
+        }
         isAlive = false;
         // Debug.Log("Enemy is Dead");
         SetSprite(EnemyState.dead);
