@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MeleeWeapon : Weapon
 {
@@ -22,7 +21,7 @@ public class MeleeWeapon : Weapon
 
         if (killsWhenThrown)
         {
-            enemyComponent.GETKNIFED();
+            enemyComponent.DeathByThrownWeapon();
             Destroy(effect, 5f);
         }
         else
@@ -40,24 +39,6 @@ public class MeleeWeapon : Weapon
 
     private void Hit()
     {
-        /*Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
-
-        if (hitEnemies.Length > 0)
-        {
-            SoundManager.PlaySound(SoundManager.Sound.melee_hit);
-            
-            foreach (Collider2D hitEnemy in hitEnemies)
-            {
-                hitEnemy.GetComponent<Enemy>().ReceiveDamage(5);
-                Debug.Log("we hit " + hitEnemy.name);
-            
-                GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-                Destroy(effect, 5f);
-            }
-        }*/
-        
-        
-        
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
 
         if (hitEnemies.Length > 0)

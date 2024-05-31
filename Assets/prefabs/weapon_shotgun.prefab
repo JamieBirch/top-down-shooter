@@ -166,6 +166,7 @@ MonoBehaviour:
   attackRange: 10
   rb: {fileID: 7085511466506847589}
   throwForce: 100
+  sprite: {fileID: 7085511466506847584}
   OnGround: 1
   weaponThrowTimeout: 3
   weaponThrowCountdown: 0

@@ -292,7 +292,7 @@ public class Enemy : MonoBehaviour
         dead
     }
 
-    public void GETKNIFED()
+    public void DeathByThrownWeapon()
     {
         Die();
     }

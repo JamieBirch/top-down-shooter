@@ -6,8 +6,9 @@ public abstract class Weapon : MonoBehaviour
     public float attackRange;
     public Rigidbody2D rb;
     public float throwForce;
+    public GameObject sprite;
 
-    public string finisherName;
+    // public string finisherName;
 
     private bool isHeld = false;
     public bool OnGround = true;
@@ -38,6 +39,8 @@ public abstract class Weapon : MonoBehaviour
 
     public void Throw()
     {
+        sprite.SetActive(true);
+
         rb.simulated = true;
         rb.AddForce(transform.up * throwForce, ForceMode2D.Impulse);
         isHeld = false;
@@ -46,6 +49,8 @@ public abstract class Weapon : MonoBehaviour
     
     public void Drop()
     {
+        sprite.SetActive(true);
+
         isHeld = false;
         rb.simulated = true;
         weaponThrowCountdown = weaponThrowTimeout;
@@ -57,6 +62,7 @@ public abstract class Weapon : MonoBehaviour
         
         isHeld = true;
         OnGround = false;
+        sprite.SetActive(false);
     }
     
     public bool IsHeld()
@@ -86,10 +92,10 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public string GetFinisherName()
+    /*public string GetFinisherName()
     {
         return finisherName;
-    }
+    }*/
     
 
 }
