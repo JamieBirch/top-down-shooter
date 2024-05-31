@@ -1,15 +1,25 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
-    public Animator animator;
+    [FormerlySerializedAs("animator")] public Animator emptyHandsAnimator;
+    public Animator pipeAnimator;
+    public Animator shotgunAnimator;
+
+    private Animator currentAnimator;
+    
     public Rigidbody2D rb;
     public GameObject bloodSpotPrefab;
     
     private bool isAlive = true;
     public GameObject spriteAlive;
     public GameObject spriteDead;
+    public GameObject spritePipe;
+    public GameObject spriteShotgun;
+
+    public GameObject currentSprite;
     
     public GameObject deathCanvas;
 
@@ -25,6 +35,12 @@ public class Player : MonoBehaviour
 
     private bool activeHandRight = true;
     private Enemy finishingEnemy;
+
+    private void Start()
+    {
+        currentSprite = spriteAlive;
+        currentAnimator = emptyHandsAnimator;
+    }
 
     void Update()
     {
@@ -92,6 +108,8 @@ public class Player : MonoBehaviour
                 if (HoldsWeapon())
                 {
                     ThrowWeapon();
+                    ChangeSprite(spriteAlive);
+                    currentAnimator = emptyHandsAnimator;
                 }
             }
         }
@@ -109,10 +127,20 @@ public class Player : MonoBehaviour
             return;
         }
         heldWeapon = weapon;
+        if (weapon.name == "pipe")
+        {
+            ChangeSprite(spritePipe);
+            currentAnimator = pipeAnimator;
+        } else if (weapon.name == "weapon_shotgun")
+        {
+            ChangeSprite(spriteShotgun);
+            currentAnimator = shotgunAnimator;
+        }
         weapon.transform.position = weaponSlot.transform.position;
         weapon.gameObject.transform.SetParent(weaponSlot.transform);
         weapon.rb.simulated = false;
         weapon.transform.rotation = new Quaternion(0,0,0, 0);
+        
         heldWeapon.PickUp();
     }
 
@@ -148,6 +176,17 @@ public class Player : MonoBehaviour
         if (HoldsWeapon())
         {
             heldWeapon.Attack();
+            
+            if (activeHandRight)
+            {
+                pipeAnimator.SetTrigger("hit enemy right");
+                activeHandRight = false;
+            }
+            else
+            {
+                pipeAnimator.SetTrigger("hit enemy left");
+                activeHandRight = true;
+            }
             // Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             // rb.AddForce(-transform.forward * heldWeapon.weaponKickback, ForceMode2D.Impulse);
         }
@@ -202,17 +241,16 @@ public class Player : MonoBehaviour
 
     private void PunchEnemy(Enemy hitEnemy)
     {
-        
         hitEnemy.GetComponent<Enemy>().GetHitByFist();
         SoundManager.PlaySound(SoundManager.Sound.fist_hit);
         if (activeHandRight)
         {
-            animator.SetTrigger("punch enemy");
+            emptyHandsAnimator.SetTrigger("punch enemy");
             activeHandRight = false;
         }
         else
         {
-            animator.SetTrigger("punch enemy left");
+            emptyHandsAnimator.SetTrigger("punch enemy left");
             activeHandRight = true;
         }
     }
@@ -223,12 +261,12 @@ public class Player : MonoBehaviour
         
         if (activeHandRight)
         {
-            animator.SetTrigger("punch miss");
+            emptyHandsAnimator.SetTrigger("punch miss");
             activeHandRight = false;
         }
         else
         {
-            animator.SetTrigger("punch miss left");
+            emptyHandsAnimator.SetTrigger("punch miss left");
             activeHandRight = true;
         }
     }
@@ -246,7 +284,8 @@ public class Player : MonoBehaviour
                 {
                     //quick finisher
                     //TODO play animation with weapon
-                    // animator.SetTrigger(heldWeapon.GetFinisherName());
+                    
+                    currentAnimator.SetTrigger("finisher");
                     enemy.GetFinished();
                 }
                 else
@@ -283,8 +322,7 @@ public class Player : MonoBehaviour
     {
         isAlive = false;
         Debug.Log("Player is Dead");
-        spriteAlive.SetActive(false);
-        spriteDead.SetActive(true);
+        ChangeSprite(spriteDead);
         
         deathCanvas.SetActive(true);
         
@@ -310,5 +348,12 @@ public class Player : MonoBehaviour
     public bool inFinisher()
     {
         return finishingEnemy != null;
+    }
+
+    private void ChangeSprite(GameObject newSprite)
+    {
+        currentSprite.SetActive(false);
+        currentSprite = newSprite;
+        currentSprite.SetActive(true);
     }
 }
