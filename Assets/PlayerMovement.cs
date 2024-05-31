@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Camera cam;
     public Animator animator;
+    public Animator animatorLegs;
 
     private Vector2 movement;
     private Vector2 mousePosition;
@@ -37,10 +38,12 @@ public class PlayerMovement : MonoBehaviour
         if (movement.magnitude > 0f)
         {
             animator.SetFloat("speed", 1f);
+            animatorLegs.SetFloat("speed", 1f);
         }
         else
         {
             animator.SetFloat("speed", 0f);
+            animatorLegs.SetFloat("speed", 0f);
         }
 
         Vector2 lookDir = mousePosition - rb.position;
