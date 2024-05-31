@@ -7042,6 +7042,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1196613533}
     - target: {fileID: 1245793998372469497, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1352947708}
+    - target: {fileID: 1245793998372469497, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1286460428}

@@ -7,6 +7,8 @@ public abstract class Weapon : MonoBehaviour
     public Rigidbody2D rb;
     public float throwForce;
 
+    public string finisherName;
+
     private bool isHeld = false;
     public bool OnGround = true;
     public float weaponThrowTimeout = 3f;
@@ -84,5 +86,10 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
+    public string GetFinisherName()
+    {
+        return finisherName;
+    }
+    
 
 }

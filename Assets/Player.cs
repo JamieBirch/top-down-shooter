@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public float weaponPickupRange;
     public GameObject weaponSlot;
 
-    public Weapon heldWeapon;
+    private Weapon heldWeapon;
     
     public float fistsAttackRange;
     public float fistsAttackAngle;
@@ -24,9 +24,30 @@ public class Player : MonoBehaviour
     public LayerMask wallLayer;
 
     private bool activeHandRight = true;
+    private Enemy finishingEnemy;
 
     void Update()
     {
+        if (finishingEnemy != null)
+        {
+            if (!finishingEnemy.IsAlive())
+            {
+                finishingEnemy = null;
+                return;
+            }
+            
+            if (Input.GetButtonDown("Fire1"))
+            {
+                //hit with fist
+                PunchEnemy(finishingEnemy);
+                //increase counter
+                finishingEnemy.IncreaseFinisherCounter();
+            }
+            else
+            {
+                return;
+            }
+        }
         
         if (Input.GetKey("r"))
         {
@@ -43,7 +64,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey("space"))
         {
-            FinishEnemy();
+            PlayFinisher();
         }
 
         if (!isAlive)
@@ -60,7 +81,7 @@ public class Player : MonoBehaviour
         {
             if (StandingNearWeapon(out var weapon))
             {
-                if (heldWeapon != null)
+                if (HoldsWeapon())
                 {
                     ThrowWeapon();
                 }
@@ -68,7 +89,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                if (heldWeapon != null)
+                if (HoldsWeapon())
                 {
                     ThrowWeapon();
                 }
@@ -124,7 +145,7 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        if (heldWeapon != null)
+        if (HoldsWeapon())
         {
             heldWeapon.Attack();
             // Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
@@ -153,7 +174,7 @@ public class Player : MonoBehaviour
 
                 if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, wallLayer))
                 {
-                    PunchEnemy(hitEnemies[0]);
+                    PunchEnemy(hitEnemies[0].GetComponent<Enemy>());
                     // canSeePlayer = true;
                 }
                 else
@@ -179,7 +200,7 @@ public class Player : MonoBehaviour
         }*/
     }
 
-    private void PunchEnemy(Collider2D hitEnemy)
+    private void PunchEnemy(Enemy hitEnemy)
     {
         
         hitEnemy.GetComponent<Enemy>().GetHitByFist();
@@ -212,17 +233,40 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FinishEnemy()
+    private void PlayFinisher()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, fistsAttackRange, enemyLayer);
-        foreach (Collider2D hitEnemy in hitEnemies)
+        if (hitEnemies.Length > 0)
         {
-            if (hitEnemy.GetComponent<Enemy>().IsStunned())
+            Enemy enemy = hitEnemies[0].GetComponent<Enemy>();
+            
+            if (enemy.IsStunned())
             {
-                hitEnemy.GetComponent<Enemy>().GetFinished();
-            } 
-            // Debug.Log("we hit " + hitEnemy.name + " with fists");
+                if (HoldsWeapon())
+                {
+                    //quick finisher
+                    //TODO play animation with weapon
+                    // animator.SetTrigger(heldWeapon.GetFinisherName());
+                    enemy.GetFinished();
+                }
+                else
+                {
+                    //start long finisher
+                    finishingEnemy = enemy;
+                    StandOn(enemy);
+                    enemy.StartFinisher();
+                }
+            }
         }
+    }
+
+    private void StandOn(Enemy enemy)
+    {
+        Vector3 enemyPosition = enemy.transform.position;
+        float enemyRbRotation = enemy.rb.rotation;
+        gameObject.transform.position = enemyPosition;
+        rb.rotation = enemyRbRotation;
+        enemy.DisableCollider();
     }
 
     public void TakeBullet()
@@ -248,8 +292,23 @@ public class Player : MonoBehaviour
         bloodSpot.GetComponent<BloodSpot>().PlayRandomAnimation();
     }
 
-    public bool isDead()
+    public bool IsDead()
     {
         return !isAlive;
+    }
+
+    public bool HoldsWeapon()
+    {
+        return heldWeapon != null;
+    }
+
+    public Weapon GetWeapon()
+    {
+        return heldWeapon;
+    }
+
+    public bool inFinisher()
+    {
+        return finishingEnemy != null;
     }
 }

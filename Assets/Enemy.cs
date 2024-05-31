@@ -31,6 +31,9 @@ public class Enemy : MonoBehaviour
     private Transform target;
 
     public GameObject bloodSpotPrefab;
+    private int finisherCounterMax = 3;
+    private int finisherCounter = 0;
+    private bool inFinisher = false;
 
     
     private void Start()
@@ -71,13 +74,13 @@ public class Enemy : MonoBehaviour
             isStunned = false;
             SetSprite(EnemyState.alive);
         }
-        if (isStunned)
+        if (isStunned && !inFinisher)
         {
             stunCountdown -= Time.deltaTime;
             return;
         }
 
-        if (fov.canSeePlayer && !fov.player.GetComponent<Player>().isDead())
+        if (fov.canSeePlayer && !fov.player.GetComponent<Player>().IsDead())
         {
             AttackPlayer();
         } else if (patrolWaypoints.Length != 0)
@@ -221,7 +224,7 @@ public class Enemy : MonoBehaviour
         isAlive = false;
         // Debug.Log("Enemy is Dead");
         SetSprite(EnemyState.dead);
-        collider.enabled = false;
+        DisableCollider();
         if (weapon != null)
         {
             DropWeapon();
@@ -232,6 +235,11 @@ public class Enemy : MonoBehaviour
         /*Animator animator = bloodSpot.GetComponent<Animator>();
         AnimationClip[] animationClips = animator.runtimeAnimatorController.animationClips;
         animator.Play(animationClips[0].name);*/
+    }
+
+    public void DisableCollider()
+    {
+        collider.enabled = false;
     }
 
     public virtual void Voice()
@@ -293,5 +301,20 @@ public class Enemy : MonoBehaviour
     {
         SoundManager.PlaySound(SoundManager.Sound.finisher);
         Die();
+    }
+
+    public void IncreaseFinisherCounter()
+    {
+        finisherCounter++;
+        if (finisherCounter == finisherCounterMax)
+        {
+            Die();
+            inFinisher = false;
+        }
+    }
+
+    public void StartFinisher()
+    {
+        inFinisher = true;
     }
 }

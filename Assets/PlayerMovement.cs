@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Player player;
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
@@ -14,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<Player>().isDead())
+        if (player.IsDead() || player.inFinisher())
         {
             return;
         }
@@ -27,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (GetComponent<Player>().isDead())
+        if (GetComponent<Player>().IsDead() || player.inFinisher())
         {
             return;
         }

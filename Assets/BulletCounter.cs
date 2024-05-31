@@ -11,7 +11,7 @@ public class BulletCounter : MonoBehaviour
 
     private void Update()
     {
-        Weapon playerHeldWeapon = player.heldWeapon;
+        Weapon playerHeldWeapon = player.GetWeapon();
         if (playerHeldWeapon != null)
         {
             if (playerHeldWeapon.GetBulletCount() >= 0)

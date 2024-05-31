@@ -143,9 +143,9 @@ public class Tutorial : MonoBehaviour
 
     private void CheckIfTookGunshot()
     {
-        if (player.heldWeapon != null)
+        if (player.HoldsWeapon())
         {
-            if (player.heldWeapon.gameObject == shotgun)
+            if (player.GetWeapon().gameObject == shotgun)
             {
                 NextStep();
             }
@@ -154,9 +154,9 @@ public class Tutorial : MonoBehaviour
 
     private void CheckIfTookPipe()
     {
-        if (player.heldWeapon != null)
+        if (player.HoldsWeapon())
         {
-            if (player.heldWeapon.gameObject == pipe)
+            if (player.GetWeapon().gameObject == pipe)
             {
                 NextStep();
             }
