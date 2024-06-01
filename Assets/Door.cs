@@ -11,6 +11,7 @@ public class Door : MonoBehaviour
     {
         isLocked = false;
         rotationPoint.transform.Rotate(0f, 0f, 90f);
+        rb.bodyType = RigidbodyType2D.Static;
     }
 
     private void Update()
