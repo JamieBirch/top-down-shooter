@@ -7043,6 +7043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hero
       objectReference: {fileID: 0}
+    - target: {fileID: 1245793999335020060, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2000339729, guid: 52f975b7db44af242914426638c6289d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
 --- !u!114 &1858985735 stripped
