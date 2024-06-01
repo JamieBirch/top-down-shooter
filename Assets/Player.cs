@@ -127,11 +127,12 @@ public class Player : MonoBehaviour
             return;
         }
         heldWeapon = weapon;
+        //FIXME too hacky
         if (weapon.name == "pipe")
         {
             ChangeSprite(spritePipe);
             currentAnimator = pipeAnimator;
-        } else if (weapon.name == "weapon_shotgun")
+        } else if (weapon.name == "weapon_gunshot")
         {
             ChangeSprite(spriteShotgun);
             currentAnimator = shotgunAnimator;
@@ -179,12 +180,12 @@ public class Player : MonoBehaviour
             
             if (activeHandRight)
             {
-                pipeAnimator.SetTrigger("hit enemy right");
+                currentAnimator.SetTrigger("hit enemy right");
                 activeHandRight = false;
             }
             else
             {
-                pipeAnimator.SetTrigger("hit enemy left");
+                currentAnimator.SetTrigger("hit enemy left");
                 activeHandRight = true;
             }
             // Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
