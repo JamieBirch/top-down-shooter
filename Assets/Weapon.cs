@@ -17,6 +17,8 @@ public abstract class Weapon : MonoBehaviour
     
     public LayerMask wallLayer;
     
+    public GameObject hitEffect;
+    
     // public float weaponKickback;
     
     public abstract void Attack();

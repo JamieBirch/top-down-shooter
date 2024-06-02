@@ -4708,6 +4708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: weapon_gunshot
       objectReference: {fileID: 0}
+    - target: {fileID: 7085511466506847590, guid: 572258e142f4ff0419b3b5d96837f649, type: 3}
+      propertyPath: bulletsMax
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7085511466506847591, guid: 572258e142f4ff0419b3b5d96837f649, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -4718,7 +4722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7085511466506847591, guid: 572258e142f4ff0419b3b5d96837f649, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.5
+      value: -4.25
       objectReference: {fileID: 0}
     - target: {fileID: 7085511466506847591, guid: 572258e142f4ff0419b3b5d96837f649, type: 3}
       propertyPath: m_LocalPosition.z

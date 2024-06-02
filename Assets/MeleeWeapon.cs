@@ -6,7 +6,7 @@ public class MeleeWeapon : Weapon
     public float meleeAttackAngle;
 
     public LayerMask enemyLayer;
-    public GameObject hitEffect;
+    // public GameObject hitEffect;
     public bool killsWhenThrown = false;
 
     public override void Attack()

@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf4c6ce218147afab67a5bed2492fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 10
+  attackRange: 20
   rb: {fileID: 7085511466506847589}
   throwForce: 100
   sprite: {fileID: 7085511466506847584}
@@ -172,12 +172,17 @@ MonoBehaviour:
   weaponThrowCountdown: 0
   wallLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  hitEffect: {fileID: 4425983472779901098, guid: cc09f4a75d0ea1542b5d40e39c47b3f9, type: 3}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   shootingPoint: {fileID: 7085511465300950895}
-  bulletPrefab: {fileID: 3701039938720068354, guid: 28f1e9946c332304eba01af49ab88b83, type: 3}
+  shootEffectPrefab: {fileID: 668504704743859368, guid: 5498dc5dc5e3b214ba863c753ae04ccd, type: 3}
   bulletsMax: 5
   bulletsCurrent: 0
   bulletForce: 10
+  rangedAttackAngle: 15
 --- !u!61 &7085511466506847588
 BoxCollider2D:
   m_ObjectHideFlags: 0
