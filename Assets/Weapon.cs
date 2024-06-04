@@ -21,7 +21,7 @@ public abstract class Weapon : MonoBehaviour
     
     // public float weaponKickback;
     
-    public abstract void Attack();
+    public abstract void Attack(float rotationZ);
 
     public abstract void HitEnemyWhenThrown(Enemy enemyComponent);
     

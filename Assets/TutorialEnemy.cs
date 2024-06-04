@@ -15,9 +15,9 @@ public class TutorialEnemy : Enemy
         return;
     }
 
-    public override void Die()
+    public override void Die(float rotation)
     {
-        base.Die();
+        base.Die(rotation);
         Destroy(soundObject);
     }
 }

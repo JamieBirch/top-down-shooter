@@ -18,11 +18,11 @@ public class RangedWeapon : Weapon
         bulletsCurrent = bulletsMax;
     }
 
-    public override void Attack()
+    public override void Attack(float rotationZ)
     {
         if (bulletsCurrent > 0)
         {
-            Shoot();
+            Shoot(rotationZ);
             bulletsCurrent--;
         }
         else
@@ -33,7 +33,7 @@ public class RangedWeapon : Weapon
 
     public override void HitEnemyWhenThrown(Enemy enemyComponent)
     {
-        enemyComponent.beStunned();
+        enemyComponent.beStunned(transform.rotation.z);
     }
 
     public override int GetBulletCount()
@@ -41,7 +41,7 @@ public class RangedWeapon : Weapon
         return bulletsCurrent;
     }
 
-    private void Shoot()
+    private void Shoot(float rotationZ)
     {
         SoundManager.PlaySound(SoundManager.Sound.shoot);
         
@@ -63,7 +63,7 @@ public class RangedWeapon : Weapon
 
                     if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, wallLayer))
                     {
-                        ShootEnemy(hitEnemy);
+                        ShootEnemy(hitEnemy, rotationZ);
                         // canSeePlayer = true;
                     }
                     /*else
@@ -89,9 +89,9 @@ public class RangedWeapon : Weapon
         // rb.AddForce(shootingPoint.up * bulletForce, ForceMode2D.Impulse);
     }
 
-    private void ShootEnemy(Collider2D hitEnemy)
+    private void ShootEnemy(Collider2D hitEnemy, float rotationZ)
     {
-        hitEnemy.GetComponent<Enemy>().ReceiveDamage(5);
+        hitEnemy.GetComponent<Enemy>().ReceiveDamage(5, rotationZ);
         // Debug.Log("we hit " + hitEnemy.name);
             
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);

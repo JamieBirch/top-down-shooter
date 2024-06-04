@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 //hit with fist
-                PunchEnemy(finishingEnemy);
+                PunchEnemy(finishingEnemy, 0f);
                 //increase counter
                 finishingEnemy.IncreaseFinisherCounter();
             }
@@ -176,7 +176,7 @@ public class Player : MonoBehaviour
     {
         if (HoldsWeapon())
         {
-            heldWeapon.Attack();
+            heldWeapon.Attack(rb.rotation);
             
             if (activeHandRight)
             {
@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
 
                 if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, wallLayer))
                 {
-                    PunchEnemy(hitEnemies[0].GetComponent<Enemy>());
+                    PunchEnemy(hitEnemies[0].GetComponent<Enemy>(), rb.rotation);
                     // canSeePlayer = true;
                 }
                 else
@@ -240,9 +240,9 @@ public class Player : MonoBehaviour
         }*/
     }
 
-    private void PunchEnemy(Enemy hitEnemy)
+    private void PunchEnemy(Enemy hitEnemy, float rotation)
     {
-        hitEnemy.GetComponent<Enemy>().GetHitByFist();
+        hitEnemy.GetComponent<Enemy>().GetHitByFist(rotation);
         SoundManager.PlaySound(SoundManager.Sound.fist_hit);
         if (activeHandRight)
         {

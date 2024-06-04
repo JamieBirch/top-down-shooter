@@ -59,10 +59,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HP <= 0)
+        /*if (HP <= 0)
         {
             Die();
-        }
+        }*/
         
         if (!isAlive)
         {
@@ -118,7 +118,7 @@ public class Enemy : MonoBehaviour
                 Vector2 lookDir = (Vector2)fov.player.transform.position - rb.position;
                 float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
                 rb.rotation = angle;
-                weapon.Attack();
+                weapon.Attack(transform.rotation.z);
             }
             else
             {
@@ -171,21 +171,25 @@ public class Enemy : MonoBehaviour
         Die();
     }*/
     
-    public void ReceiveDamage(int damage)
+    public void ReceiveDamage(int damage, float rotation)
     {
         HP -= damage;
+        if (HP <= 0)
+        {
+            Die(rotation);
+        }
     }
     
-    public void GetHitByFist()
+    public void GetHitByFist(float rotation)
     {
         if (!isStunned)
         {
-            beStunned();
-            ReceiveDamage(1);
+            beStunned(rotation);
+            // ReceiveDamage(1);
         }
     }
 
-    public void beStunned()
+    public void beStunned(float rotation)
     {
         stunCountdown = stunTimeout;
         
@@ -196,6 +200,7 @@ public class Enemy : MonoBehaviour
         
         isStunned = true;
         SetSprite(EnemyState.stunned);
+        RotateSprite(rotation);
     }
     
     private void DropWeapon()
@@ -215,7 +220,7 @@ public class Enemy : MonoBehaviour
         foundWeapon.transform.rotation = new Quaternion(0,0,180, 0);
     }
 
-    public virtual void Die()
+    public virtual void Die(float rotation)
     {
         if (!isAlive)
         {
@@ -224,6 +229,12 @@ public class Enemy : MonoBehaviour
         isAlive = false;
         // Debug.Log("Enemy is Dead");
         SetSprite(EnemyState.dead);
+        //TOFIX magic numbers
+        if (rotation != 1000f)
+        {
+            RotateSprite(rotation);
+        }
+        // spriteDead.transform.Rotate(0f, 0f, rotation);
         DisableCollider();
         if (weapon != null)
         {
@@ -235,6 +246,11 @@ public class Enemy : MonoBehaviour
         /*Animator animator = bloodSpot.GetComponent<Animator>();
         AnimationClip[] animationClips = animator.runtimeAnimatorController.animationClips;
         animator.Play(animationClips[0].name);*/
+    }
+
+    private void RotateSprite(float rotation)
+    {
+        rb.rotation = rotation;
     }
 
     public void DisableCollider()
@@ -292,15 +308,15 @@ public class Enemy : MonoBehaviour
         dead
     }
 
-    public void DeathByThrownWeapon()
+    public void DeathByThrownWeapon(float rotation)
     {
-        Die();
+        Die(rotation);
     }
 
     public void GetFinished()
     {
         SoundManager.PlaySound(SoundManager.Sound.finisher);
-        Die();
+        Die(1000f);
     }
 
     public void IncreaseFinisherCounter()
@@ -308,7 +324,7 @@ public class Enemy : MonoBehaviour
         finisherCounter++;
         if (finisherCounter == finisherCounterMax)
         {
-            Die();
+            Die(1000f);
             inFinisher = false;
         }
     }

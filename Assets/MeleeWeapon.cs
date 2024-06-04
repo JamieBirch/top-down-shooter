@@ -9,9 +9,9 @@ public class MeleeWeapon : Weapon
     // public GameObject hitEffect;
     public bool killsWhenThrown = false;
 
-    public override void Attack()
+    public override void Attack(float rotationZ)
     {
-        Hit();
+        Hit(rotationZ);
     }
 
     public override void HitEnemyWhenThrown(Enemy enemyComponent)
@@ -21,12 +21,12 @@ public class MeleeWeapon : Weapon
 
         if (killsWhenThrown)
         {
-            enemyComponent.DeathByThrownWeapon();
+            enemyComponent.DeathByThrownWeapon(rb.rotation);
             Destroy(effect, 5f);
         }
         else
         {
-            enemyComponent.beStunned();
+            enemyComponent.beStunned(rb.rotation);
         }
         
         // throw new System.NotImplementedException();
@@ -37,7 +37,7 @@ public class MeleeWeapon : Weapon
         return -1;
     }
 
-    private void Hit()
+    private void Hit(float rotationZ)
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
 
@@ -53,7 +53,7 @@ public class MeleeWeapon : Weapon
 
                 if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, wallLayer))
                 {
-                    HitEnemy(hitEnemies[0]);
+                    HitEnemy(hitEnemies[0], rotationZ);
                     // canSeePlayer = true;
                 }
                 else
@@ -79,11 +79,11 @@ public class MeleeWeapon : Weapon
         SoundManager.PlaySound(SoundManager.Sound.fist_miss);
     }
 
-    private void HitEnemy(Collider2D hitEnemy)
+    private void HitEnemy(Collider2D hitEnemy, float rotationZ)
     {
         // animator.SetTrigger("hit with weapon");
         SoundManager.PlaySound(SoundManager.Sound.melee_hit);
-        hitEnemy.GetComponent<Enemy>().ReceiveDamage(5);
+        hitEnemy.GetComponent<Enemy>().ReceiveDamage(5, rotationZ);
         // Debug.Log("we hit " + hitEnemy.name);
             
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);

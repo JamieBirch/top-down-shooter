@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
 
             if (colGameObject.TryGetComponent<Enemy>(out var enemyComponent))
             {
-                enemyComponent.ReceiveDamage(5);
+                enemyComponent.ReceiveDamage(5, transform.rotation.z);
                 // enemyComponent.TakeBullet();
             }
         
