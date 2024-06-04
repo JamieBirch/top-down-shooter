@@ -7208,6 +7208,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 527808901, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245793998372469495, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 1764758928}
     - target: {fileID: 1245793998372469495, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
       propertyPath: deathCanvas
       value: 
@@ -7264,12 +7272,29 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 1245793998372469499, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245793998372469499, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1245793998372469501, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
       propertyPath: m_Name
       value: hero
       objectReference: {fileID: 0}
+    - target: {fileID: 1245793999335020032, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+--- !u!61 &1764758928 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1245793998372469499, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+  m_PrefabInstance: {fileID: 1713007122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1858985735 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6792024380744417254, guid: 577dea7e636c837478e83fb3b680c1b1, type: 3}
@@ -7700,6 +7725,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 412687343}
+    - target: {fileID: 8240140248137544890, guid: 6d16bbdf24a6e694dadabd4fb64c1728, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d16bbdf24a6e694dadabd4fb64c1728, type: 3}
 --- !u!1001 &6792024381040957741

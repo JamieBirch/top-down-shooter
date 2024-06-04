@@ -90,11 +90,11 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 256
+  hitEffect: {fileID: 4425983472779901098, guid: cc09f4a75d0ea1542b5d40e39c47b3f9, type: 3}
   meleeAttackAngle: 90
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  hitEffect: {fileID: 4425983472779901098, guid: cc09f4a75d0ea1542b5d40e39c47b3f9, type: 3}
   killsWhenThrown: 0
 --- !u!61 &4386711680722508524
 BoxCollider2D:
@@ -120,7 +120,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.62}
+  m_Size: {x: 0.1, y: 0.83}
   m_EdgeRadius: 0
 --- !u!50 &2296566496335044120
 Rigidbody2D:

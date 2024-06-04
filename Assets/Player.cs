@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private Animator currentAnimator;
     
     public Rigidbody2D rb;
+    public BoxCollider2D collider;
     public GameObject bloodSpotPrefab;
     
     private bool isAlive = true;
@@ -110,6 +111,8 @@ public class Player : MonoBehaviour
                     ThrowWeapon();
                     ChangeSprite(spriteAlive);
                     currentAnimator = emptyHandsAnimator;
+                    collider.size = new Vector2(0.7f, 0.4f);
+                    collider.offset = new Vector2(0, 0);
                 }
             }
         }
@@ -132,10 +135,14 @@ public class Player : MonoBehaviour
         {
             ChangeSprite(spritePipe);
             currentAnimator = pipeAnimator;
+            collider.size = new Vector2(0.7f, 1f);
+            collider.offset = new Vector2(0, 0.3f);
         } else if (weapon.name == "weapon_gunshot")
         {
             ChangeSprite(spriteShotgun);
             currentAnimator = shotgunAnimator;
+            collider.size = new Vector2(0.7f, 1f);
+            collider.offset = new Vector2(0, 0.4f);
         }
         weapon.transform.position = weaponSlot.transform.position;
         weapon.gameObject.transform.SetParent(weaponSlot.transform);
