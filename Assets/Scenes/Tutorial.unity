@@ -480,6 +480,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fd77cf44618371488f60293fd5fd57e, type: 3}
+--- !u!1 &39737461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1073489661810664242, guid: 9fd77cf44618371488f60293fd5fd57e, type: 3}
+  m_PrefabInstance: {fileID: 39737460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &39737462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1073489661016644019, guid: 9fd77cf44618371488f60293fd5fd57e, type: 3}
+  m_PrefabInstance: {fileID: 39737460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &39737463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39737461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &39737464 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7020406868207940828, guid: 9fd77cf44618371488f60293fd5fd57e, type: 3}
@@ -491,6 +516,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98d2827f55f2574c8ad21ad26f52926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &39737465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39737462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &258798860
 GameObject:
   m_ObjectHideFlags: 0
@@ -7164,6 +7204,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 405199141, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1245793998372469495, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
       propertyPath: deathCanvas
       value: 
@@ -7215,6 +7259,10 @@ PrefabInstance:
     - target: {fileID: 1245793998372469498, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245793998372469499, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1245793998372469501, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
       propertyPath: m_Name
