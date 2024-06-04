@@ -4722,7 +4722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7085511466506847591, guid: 572258e142f4ff0419b3b5d96837f649, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.25
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 7085511466506847591, guid: 572258e142f4ff0419b3b5d96837f649, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6969,6 +6969,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 51418466b3b0b7b4c9ea8b92f9ba939d, type: 3}
   - sound: 7
     audioClip: {fileID: 8300000, guid: de6c69f3a7463e040813e3a10bb8b073, type: 3}
+  - sound: 8
+    audioClip: {fileID: 8300000, guid: 5561e0df165b0cb448893ccaa72dfabb, type: 3}
 --- !u!4 &1641136009
 Transform:
   m_ObjectHideFlags: 0
@@ -7047,10 +7049,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: hero
       objectReference: {fileID: 0}
-    - target: {fileID: 1245793999335020060, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2000339729, guid: 52f975b7db44af242914426638c6289d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
 --- !u!114 &1858985735 stripped

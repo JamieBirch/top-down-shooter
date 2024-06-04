@@ -14,7 +14,8 @@ public class SoundManager : MonoBehaviour
         pickup_weapon,
         melee_hit,
         finisher,
-        shoot
+        shoot,
+        no_ammo
     }
 
     public static Dictionary<Sound, AudioClip> soundsDictionary = new Dictionary<Sound, AudioClip>();

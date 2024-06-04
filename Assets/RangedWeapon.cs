@@ -27,7 +27,7 @@ public class RangedWeapon : Weapon
         }
         else
         {
-            //TODO
+            SoundManager.PlaySound(SoundManager.Sound.no_ammo);
         }
     }
 
