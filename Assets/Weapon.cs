@@ -18,6 +18,9 @@ public abstract class Weapon : MonoBehaviour
     public LayerMask wallLayer;
     
     public GameObject hitEffect;
+
+    public Vector2 colliderOffset;
+    public Vector2 colliderSize;
     
     // public float weaponKickback;
     
@@ -65,6 +68,8 @@ public abstract class Weapon : MonoBehaviour
         isHeld = true;
         OnGround = false;
         sprite.SetActive(false);
+        
+        
     }
     
     public bool IsHeld()

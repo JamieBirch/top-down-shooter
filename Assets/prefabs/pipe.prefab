@@ -91,6 +91,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   hitEffect: {fileID: 4425983472779901098, guid: cc09f4a75d0ea1542b5d40e39c47b3f9, type: 3}
+  colliderOffset: {x: 0, y: 0.05}
+  colliderSize: {x: 0.75, y: 0.55}
   meleeAttackAngle: 90
   enemyLayer:
     serializedVersion: 2

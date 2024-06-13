@@ -135,15 +135,21 @@ public class Player : MonoBehaviour
         {
             ChangeSprite(spritePipe);
             currentAnimator = pipeAnimator;
-            collider.size = new Vector2(0.7f, 1f);
-            collider.offset = new Vector2(0, 0.3f);
+            collider.size = weapon.colliderSize;
+            collider.offset = weapon.colliderOffset;
+            /*collider.size = new Vector2(0.75f, 0.55f);
+            collider.offset = new Vector2(0, 0.05f);*/
         } else if (weapon.name == "weapon_gunshot")
         {
             ChangeSprite(spriteShotgun);
             currentAnimator = shotgunAnimator;
-            collider.size = new Vector2(0.7f, 1f);
-            collider.offset = new Vector2(0, 0.4f);
+            collider.size = weapon.colliderSize;
+            collider.offset = weapon.colliderOffset;
+            /*collider.size = new Vector2(0.7f, 1f);
+            collider.offset = new Vector2(0, 0.4f);*/
         }
+        
+        
         weapon.transform.position = weaponSlot.transform.position;
         weapon.gameObject.transform.SetParent(weaponSlot.transform);
         weapon.rb.simulated = false;
