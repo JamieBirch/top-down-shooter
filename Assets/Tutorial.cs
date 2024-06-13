@@ -36,7 +36,7 @@ public class Tutorial : MonoBehaviour
         instructions.Add(5, "Хватай ствол");
         instructions.Add(6, "Время пострелять!");
         instructions.Add(7, "");
-        instructions.Add(8, "");
+        // instructions.Add(8, "");
         
         PerformOneTimeActions();
     }
@@ -72,31 +72,31 @@ public class Tutorial : MonoBehaviour
             }
             case 4:
             {
-                CheckIfHitWithPipe();
+                // CheckIfHitWithPipe();
+                CheckIfKilled(2);
                 break;
             }
             case 5:
             {
-                CheckIfKilled(2);
+                CheckIfTookGunshot();
                 break;
             }
             case 6:
             {
                 // doors[2].Open();
                 // enemies[2].Voice();
-                CheckIfTookGunshot();
+                CheckIfKilled(1);
                 break;
             }
             case 7:
             {
-                CheckIfKilled(1);
-                break;
-            }
-            case 8:
-            {
                 Debug.Log("tutorial finished?");
                 break;
             }
+            /*case 8:
+            {
+                
+            }*/
         }
 
         text.text = instructions[currentStep];
@@ -111,13 +111,13 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    private void CheckIfHitWithPipe()
+    /*private void CheckIfHitWithPipe()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             NextStep();
         }
-    }
+    }*/
 
     private void CheckIfPunched()
     {
@@ -196,23 +196,24 @@ public class Tutorial : MonoBehaviour
             case 5:
             {
                 StartCoroutine(ShowObject(shotgun.transform));
-                break;
-            }
-            case 6:
-            {
                 doors[2].Open();
                 enemies[2].Voice();
                 break;
             }
-            case 7:
+            case 6:
             {
                 break;
             }
-            case 8:
+            case 7:
             {
                 Debug.Log("tutorial finished?");
                 break;
             }
+            /*case 8:
+            {
+                Debug.Log("tutorial finished?");
+                break;
+            }*/
         }
     }
 
