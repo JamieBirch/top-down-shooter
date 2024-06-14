@@ -81,7 +81,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1.5
-  rb: {fileID: 0}
+  rb: {fileID: 2296566496335044120}
+  weaponCollider: {fileID: 4386711680722508524}
   throwForce: 100
   sprite: {fileID: 3466870975642432221}
   OnGround: 1

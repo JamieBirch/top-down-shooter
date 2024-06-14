@@ -5,6 +5,7 @@ public abstract class Weapon : MonoBehaviour
 {
     public float attackRange;
     public Rigidbody2D rb;
+    public Collider2D weaponCollider;
     public float throwForce;
     public GameObject sprite;
 
@@ -12,7 +13,7 @@ public abstract class Weapon : MonoBehaviour
 
     private bool isHeld = false;
     public bool OnGround = true;
-    public float weaponThrowTimeout = 3f;
+    public float weaponThrowTimeout = 1.5f;
     public float weaponThrowCountdown = 0f;
     
     public LayerMask wallLayer;
@@ -39,12 +40,14 @@ public abstract class Weapon : MonoBehaviour
         else if (!OnGround && !isHeld)
         {
             OnGround = true;
+            weaponCollider.isTrigger = true;
         }
     }
 
     public void Throw()
     {
         sprite.SetActive(true);
+        weaponCollider.isTrigger = false;
 
         rb.simulated = true;
         rb.AddForce(transform.up * throwForce, ForceMode2D.Impulse);
