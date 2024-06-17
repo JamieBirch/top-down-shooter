@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6820580181479766427}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8127103033147728446}
   - component: {fileID: 4386711680722508524}
   - component: {fileID: 2296566496335044120}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.19}
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.83}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.15
 --- !u!50 &2296566496335044120
 Rigidbody2D:
   serializedVersion: 4
@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692975344173999790}
   - component: {fileID: 4074954398447497925}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3295036666300144778}
   - component: {fileID: 8240140248137544890}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: "\u043E\u0440\u0443\u0436\u0438\u0435_7"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

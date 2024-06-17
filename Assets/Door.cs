@@ -14,15 +14,4 @@ public class Door : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
     }
 
-    private void Update()
-    {
-        if (isLocked)
-        {
-            rb.mass = 1000f;
-        }
-        else
-        {
-            rb.mass = 5f;
-        }
-    }
 }

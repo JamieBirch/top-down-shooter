@@ -5,12 +5,14 @@ public class RangedWeapon : Weapon
     public LayerMask enemyLayer;
     
     public Transform shootingPoint;
-    // public GameObject bulletPrefab;
-    public GameObject shootEffectPrefab;
+    public GameObject bulletPrefab;
+    // public GameObject shootEffectPrefab;
+
+    public int partsShotAtOnce;
     
     public int bulletsMax;
     public int bulletsCurrent;
-    // public float bulletForce;
+    public float bulletForce;
     public float rangedAttackAngle;
     
     private void Start()
@@ -45,12 +47,12 @@ public class RangedWeapon : Weapon
     {
         SoundManager.PlaySound(SoundManager.Sound.shoot);
         
-        GameObject shootEffect = Instantiate(shootEffectPrefab, shootingPoint.position, shootingPoint.rotation);
-        Destroy(shootEffect, 5f);
+        // GameObject shootEffect = Instantiate(shootEffectPrefab, shootingPoint.position, shootingPoint.rotation);
+        // Destroy(shootEffect, 5f);
         
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
+        // Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
 
-        if (hitEnemies.Length > 0)
+        /*if (hitEnemies.Length > 0)
         {
             foreach (Collider2D hitEnemy in hitEnemies)
             {
@@ -69,21 +71,29 @@ public class RangedWeapon : Weapon
                     /*else
                     {
                         HitMiss();
-                    }*/
+                    }#1#
                 
                 }
                 /*else
                 {
                     HitMiss();
-                }*/
+                }#1#
             }
-        }
+        }*/
         /*else
         {
             HitMiss();
         }*/
-        
-        
+
+
+        for (int i = 0; i < partsShotAtOnce; i++)
+        {
+            Vector3 spread = new Vector3(Random.Range(-rangedAttackAngle/2, rangedAttackAngle/2), 0,0);
+            GameObject projectile = Instantiate(bulletPrefab, shootingPoint.position + (spread * 0.01f), shootingPoint.rotation);
+            projectile.GetComponent<Rigidbody2D>()
+                .AddForce((shootingPoint.up * (bulletForce + Random.Range(-rangedAttackAngle/2, rangedAttackAngle/2))) /*+ (100 * shootingPoint.right * spread.x)*/, ForceMode2D.Impulse);
+            Destroy(projectile, 1f);
+        }
         // GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         // Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         // rb.AddForce(shootingPoint.up * bulletForce, ForceMode2D.Impulse);
