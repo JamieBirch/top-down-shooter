@@ -61,8 +61,8 @@ Transform:
   m_GameObject: {fileID: 4149888967897408187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6820580181479766427}
   m_Father: {fileID: 0}
@@ -83,7 +83,7 @@ MonoBehaviour:
   attackRange: 1.5
   rb: {fileID: 2296566496335044120}
   weaponCollider: {fileID: 4386711680722508524}
-  throwForce: 100
+  throwForce: 40
   sprite: {fileID: 3466870975642432221}
   OnGround: 1
   weaponThrowTimeout: 3
