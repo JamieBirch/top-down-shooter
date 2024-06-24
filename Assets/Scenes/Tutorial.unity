@@ -7329,7 +7329,7 @@ MonoBehaviour:
   - sound: 6
     audioClip: {fileID: 8300000, guid: 90a2647d870677e40b70c8334c7d3591, type: 3}
   - sound: 4
-    audioClip: {fileID: 8300000, guid: 48b4f525d8a064f4694de8e17cc4b24b, type: 3}
+    audioClip: {fileID: 8300000, guid: cc664e5844d2f7e4e9271562d70b2e3a, type: 3}
   - sound: 3
     audioClip: {fileID: 8300000, guid: 1e000b1484e2dd74893b75d2e94e8f33, type: 3}
   - sound: 2
