@@ -31,6 +31,9 @@ public class Player : MonoBehaviour
     
     public float fistsAttackRange;
     public float fistsAttackAngle;
+    public float attackTimeout;
+    public float attackCountdown = 0;
+    
     public LayerMask enemyLayer;
     public LayerMask wallLayer;
 
@@ -89,8 +92,9 @@ public class Player : MonoBehaviour
             return;
         }
         
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && attackCountdown <= 0)
         {
+            attackCountdown = attackTimeout;
             Attack();
         }
 
@@ -116,6 +120,8 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        attackCountdown -= Time.deltaTime;
     }
 
     private void ReloadLevel()

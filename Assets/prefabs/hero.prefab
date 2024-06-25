@@ -280,6 +280,8 @@ MonoBehaviour:
   weaponSlot: {fileID: 1245793999276452125}
   fistsAttackRange: 1
   fistsAttackAngle: 90
+  attackTimeout: 0.5
+  attackCountdown: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
