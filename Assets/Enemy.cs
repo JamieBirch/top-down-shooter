@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
     public FieldOfView fov;
     public Rigidbody2D rb;
+
+    public bool Alert = false;
     
     public float speed;
     public float fistAttackRange;
@@ -14,7 +17,7 @@ public class Enemy : MonoBehaviour
     public GameObject spriteAlive;
     public GameObject spriteStunned;
     public GameObject spriteDead;
-    public BoxCollider2D collider;
+    [FormerlySerializedAs("collider")] public BoxCollider2D collider_;
 
     public GameObject weaponSlot;
     public GameObject weaponPrefab;
@@ -22,13 +25,17 @@ public class Enemy : MonoBehaviour
 
     public float stunTimeout;
     public float stunCountdown;
+
+    public float alertTimeout;
+    public float alertCountdown;
     
     public Transform[] patrolWaypoints;
     //TODO: does not work = should be V3/V2
-    public Transform defaultPosition;
+    public Vector3 defaultPosition;
     private int waypointIndex = 0;
 
-    private Transform target;
+    public Vector3 emptyVector = new Vector3();
+    public Vector3 target;
 
     public GameObject bloodSpotPrefab;
     private int finisherCounterMax = 3;
@@ -39,11 +46,15 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         SetSprite(EnemyState.alive);
-        defaultPosition = transform;
+        defaultPosition = transform.position;
         
         if (patrolWaypoints.Length != 0)
         {
-            target = patrolWaypoints[0];
+            target = patrolWaypoints[0].position;
+        }
+        else
+        {
+            target = emptyVector;
         }
 
         if (weaponPrefab != null)
@@ -82,26 +93,63 @@ public class Enemy : MonoBehaviour
 
         if (fov.canSeePlayer && !fov.player.GetComponent<Player>().IsDead())
         {
+            Alert = true;
+            alertCountdown = alertTimeout;
+            //run to player/shoot player
             AttackPlayer();
-        } else if (patrolWaypoints.Length != 0)
-        {
-            Patrol();
         }
         else
         {
-            target = defaultPosition;
+            if (Alert)
+            {
+                //run to last location of player
+                
+                //if already there - look around (rotate)
+                if (target == transform.position)
+                {
+                    //TODO look around between two points of forward+-90 degrees 
+                    Vector2 lookDir = (Vector2)fov.player.transform.position - rb.position;
+                    float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+                    rb.rotation = angle;
+                }
+                alertCountdown -= Time.deltaTime;
+            }
+            
+            if (Alert && alertCountdown <= 0)
+            {
+                Alert = false;
+                target = defaultPosition;
+            }
+            if (patrolWaypoints.Length != 0)
+            {
+                Patrol();
+            }
+            /*else
+            {
+                //return to start point
+                target = defaultPosition;
+            }*/
+            
         }
 
-        if (target != null)
+        if (target != emptyVector)
         {
-            Vector3 dir = target.position - transform.position;
+            /*if (transform.position == target)
+            {
+                target = emptyVector;
+            }
+            else
+            {
+                
+            }*/
+            Vector3 dir = target - transform.position;
             transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
         }
     }
 
     private void Patrol()
     {
-        if (Vector3.Distance(transform.position, target.position) <= 0.2f)
+        if (Vector3.Distance(transform.position, target) <= 0.2f)
         {
             GetNextWaypoint();
         }
@@ -114,16 +162,18 @@ public class Enemy : MonoBehaviour
         {
             if (weapon.attackRange > distanceToPlayer)
             {
-                //attack with ranged weapon
+                //rotate in direction of player
                 Vector2 lookDir = (Vector2)fov.player.transform.position - rb.position;
                 float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
                 rb.rotation = angle;
+                
+                //attack with ranged weapon
                 weapon.Attack(transform.rotation.z);
             }
             else
             {
                 //get closer
-                target = fov.player.transform;
+                target = fov.player.transform.position;
             }
         }
         else
@@ -136,7 +186,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 //get closer
-                target = fov.player.transform;
+                target = fov.player.transform.position;
             }
         }
     }
@@ -158,7 +208,7 @@ public class Enemy : MonoBehaviour
         {
             waypointIndex++;
         }
-        target = patrolWaypoints[waypointIndex];
+        target = patrolWaypoints[waypointIndex].position;
     }
 
     /*public void TakeBullet()
@@ -255,7 +305,7 @@ public class Enemy : MonoBehaviour
 
     public void DisableCollider()
     {
-        collider.enabled = false;
+        collider_.enabled = false;
     }
 
     public virtual void Voice()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -39,6 +40,7 @@ public class FieldOfView : MonoBehaviour
         {
             Transform target = rangeChecks[0].transform;
             Vector2 directionToTarget = (target.position - transform.position).normalized;
+            // Debug.Log(directionToTarget);
 
             if (Vector2.Angle(transform.up, directionToTarget) < angle / 2)
             {
@@ -63,4 +65,28 @@ public class FieldOfView : MonoBehaviour
             canSeePlayer = false;
         }
     }
+
+    /*private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.grey;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }*/
+    
+    /*void OnDrawGizmosSelected()
+    {
+        // float angle = 30.0f;
+        // float rayRange = 10.0f;
+        // float halfFOV = angle / 2.0f;
+        // float coneDirection = 180;
+
+        Quaternion upRayRotation = Quaternion.AngleAxis(-angle / 2 /*+ Vector2.Angle(transform.up, directionToTarget)#1#, Vector2.up);
+        Quaternion downRayRotation = Quaternion.AngleAxis(angle / 2 /*+ Vector2.Angle(transform.up, directionToTarget)#1#, Vector2.up);
+
+        Vector2 upRayDirection = upRayRotation * transform.right * radius;
+        Vector2 downRayDirection = downRayRotation * transform.right * radius;
+
+        Gizmos.DrawRay(transform.position, upRayDirection);
+        Gizmos.DrawRay(transform.position, downRayDirection);
+        Gizmos.DrawLine((Vector2)transform.position + downRayDirection, (Vector2)transform.position + upRayDirection);
+    }*/
 }

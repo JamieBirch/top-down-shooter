@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf4c6ce218147afab67a5bed2492fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponType: 1
   attackRange: 20
   rb: {fileID: 7085511466506847589}
   weaponCollider: {fileID: 7085511466506847588}

@@ -252,18 +252,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fov: {fileID: 2857140098249907209}
   rb: {fileID: 5224606671633799057}
+  Alert: 0
   speed: 2
   fistAttackRange: 0.5
   HP: 5
   spriteAlive: {fileID: 5224606672109926981}
   spriteStunned: {fileID: 2680897686020882145}
   spriteDead: {fileID: 5224606671012023959}
-  collider: {fileID: 5224606671633799058}
+  collider_: {fileID: 5224606671633799058}
   weaponSlot: {fileID: 2555434296051648865}
   weaponPrefab: {fileID: 0}
   weapon: {fileID: 0}
   stunTimeout: 1
   stunCountdown: 0
+  alertTimeout: 4
+  alertCountdown: 0
   patrolWaypoints: []
   defaultPosition: {fileID: 0}
   bloodSpotPrefab: {fileID: 0}
@@ -326,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a7be005008dfe4e83af5dfc2504ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 10
   angle: 90
   player: {fileID: 0}
   targetMask:

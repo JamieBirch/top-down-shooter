@@ -268,7 +268,7 @@ MonoBehaviour:
   pipeAnimator: {fileID: 527808903}
   shotgunAnimator: {fileID: 405199144}
   rb: {fileID: 1245793998372469496}
-  collider: {fileID: 0}
+  collider_: {fileID: 0}
   bloodSpotPrefab: {fileID: 6136873832623499859, guid: ba6f91ea22e147442ad46dabea92dcaf, type: 3}
   spriteAlive: {fileID: 1245793999335020032}
   spriteDead: {fileID: 1245793999984346466}
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1245793998372469495}
-  moveSpeed: 5
+  moveSpeed: 10
   rb: {fileID: 1245793998372469496}
   cam: {fileID: 0}
   animator: {fileID: 1286460428}
@@ -603,7 +603,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 9
   m_Sprite: {fileID: 1111601684, guid: fdaf9325d5b99b345a7382a6b687b956, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

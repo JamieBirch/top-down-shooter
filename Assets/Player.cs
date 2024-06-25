@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private Animator currentAnimator;
     
     public Rigidbody2D rb;
-    public BoxCollider2D collider;
+    [FormerlySerializedAs("collider")] public BoxCollider2D collider_;
     public GameObject bloodSpotPrefab;
     
     private bool isAlive = true;
@@ -111,8 +111,8 @@ public class Player : MonoBehaviour
                     ThrowWeapon();
                     ChangeSprite(spriteAlive);
                     currentAnimator = emptyHandsAnimator;
-                    collider.size = new Vector2(0.7f, 0.4f);
-                    collider.offset = new Vector2(0, 0);
+                    collider_.size = new Vector2(0.7f, 0.4f);
+                    collider_.offset = new Vector2(0, 0);
                 }
             }
         }
@@ -130,21 +130,20 @@ public class Player : MonoBehaviour
             return;
         }
         heldWeapon = weapon;
-        //FIXME too hacky
-        if (weapon.name == "pipe")
+        if (weapon.weaponType == WeaponType.pipe)
         {
             ChangeSprite(spritePipe);
             currentAnimator = pipeAnimator;
-            collider.size = weapon.colliderSize;
-            collider.offset = weapon.colliderOffset;
+            collider_.size = weapon.colliderSize;
+            collider_.offset = weapon.colliderOffset;
             /*collider.size = new Vector2(0.75f, 0.55f);
             collider.offset = new Vector2(0, 0.05f);*/
-        } else if (weapon.name == "weapon_gunshot")
+        } else if (weapon.weaponType == WeaponType.shotgun)
         {
             ChangeSprite(spriteShotgun);
             currentAnimator = shotgunAnimator;
-            collider.size = weapon.colliderSize;
-            collider.offset = weapon.colliderOffset;
+            collider_.size = weapon.colliderSize;
+            collider_.offset = weapon.colliderOffset;
             /*collider.size = new Vector2(0.7f, 1f);
             collider.offset = new Vector2(0, 0.4f);*/
         }

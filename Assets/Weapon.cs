@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public WeaponType weaponType = WeaponType.none;
     public float attackRange;
     public Rigidbody2D rb;
     public Collider2D weaponCollider;
@@ -106,6 +107,11 @@ public abstract class Weapon : MonoBehaviour
     {
         return finisherName;
     }*/
-    
+}
 
+public enum WeaponType
+{
+    none,
+    shotgun,
+    pipe
 }
