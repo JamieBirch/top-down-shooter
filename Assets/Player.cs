@@ -193,12 +193,12 @@ public class Player : MonoBehaviour
             if (activeHandRight)
             {
                 currentAnimator.SetTrigger("hit enemy right");
-                activeHandRight = false;
+                SwitchHands();
             }
             else
             {
                 currentAnimator.SetTrigger("hit enemy left");
-                activeHandRight = true;
+                SwitchHands();
             }
             // Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             // rb.AddForce(-transform.forward * heldWeapon.weaponKickback, ForceMode2D.Impulse);
@@ -259,12 +259,12 @@ public class Player : MonoBehaviour
         if (activeHandRight)
         {
             emptyHandsAnimator.SetTrigger("punch enemy");
-            activeHandRight = false;
+            SwitchHands();
         }
         else
         {
             emptyHandsAnimator.SetTrigger("punch enemy left");
-            activeHandRight = true;
+            SwitchHands();
         }
     }
     
@@ -275,12 +275,12 @@ public class Player : MonoBehaviour
         if (activeHandRight)
         {
             emptyHandsAnimator.SetTrigger("punch miss");
-            activeHandRight = false;
+            SwitchHands();
         }
         else
         {
             emptyHandsAnimator.SetTrigger("punch miss left");
-            activeHandRight = true;
+            SwitchHands();
         }
     }
 
@@ -368,5 +368,17 @@ public class Player : MonoBehaviour
         currentSprite.SetActive(false);
         currentSprite = newSprite;
         currentSprite.SetActive(true);
+    }
+    
+    private void SwitchHands()
+    {
+        if (activeHandRight)
+        {
+            activeHandRight = false;
+        }
+        else
+        {
+            activeHandRight = true;
+        }
     }
 }
