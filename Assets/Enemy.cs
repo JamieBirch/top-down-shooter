@@ -1,3 +1,4 @@
+using Pathfinding;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -6,6 +7,8 @@ public class Enemy : MonoBehaviour
     public FieldOfView fov;
     public Rigidbody2D rb;
 
+    public AIDestinationSetter destinationSetter;
+    
     public bool Alert = false;
     
     public float speed;
@@ -31,11 +34,15 @@ public class Enemy : MonoBehaviour
     
     public Transform[] patrolWaypoints;
     //TODO: does not work = should be V3/V2
-    public Vector3 defaultPosition;
+    // public Vector3 defaultPosition;
     private int waypointIndex = 0;
 
-    public Vector3 emptyVector = new Vector3();
-    public Vector3 target;
+    // public Vector3 emptyVector = new Vector3();
+    // public Vector3 target;
+
+    public GameObject playerLastSeenLocationPrefab;
+    public GameObject defaultEnemyLocationPrefab;
+    public Transform defaultPosition;
 
     public GameObject bloodSpotPrefab;
     private int finisherCounterMax = 3;
@@ -46,15 +53,16 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         SetSprite(EnemyState.alive);
-        defaultPosition = transform.position;
+        defaultPosition = Instantiate(defaultEnemyLocationPrefab, transform.position, Quaternion.identity).transform; 
+        // defaultPosition = transform.position;
         
         if (patrolWaypoints.Length != 0)
         {
-            target = patrolWaypoints[0].position;
+            destinationSetter.target = patrolWaypoints[0];
         }
         else
         {
-            target = emptyVector;
+            destinationSetter.target = null;
         }
 
         if (weaponPrefab != null)
@@ -105,7 +113,7 @@ public class Enemy : MonoBehaviour
                 //run to last location of player
                 
                 //if already there - look around (rotate)
-                if (target == transform.position)
+                if (destinationSetter.target.position == transform.position)
                 {
                     //TODO look around between two points of forward+-90 degrees 
                     Vector2 lookDir = (Vector2)fov.player.transform.position - rb.position;
@@ -118,7 +126,7 @@ public class Enemy : MonoBehaviour
             if (Alert && alertCountdown <= 0)
             {
                 Alert = false;
-                target = defaultPosition;
+                destinationSetter.target = defaultPosition;
             }
             if (patrolWaypoints.Length != 0)
             {
@@ -132,7 +140,7 @@ public class Enemy : MonoBehaviour
             
         }
 
-        if (target != emptyVector)
+        /*if (destinationSetter.target != null)
         {
             /*if (transform.position == target)
             {
@@ -141,15 +149,15 @@ public class Enemy : MonoBehaviour
             else
             {
                 
-            }*/
-            Vector3 dir = target - transform.position;
+            }#1#
+            Vector3 dir = destinationSetter.target.position - transform.position;
             transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-        }
+        }*/
     }
 
     private void Patrol()
     {
-        if (Vector3.Distance(transform.position, target) <= 0.2f)
+        if (Vector3.Distance(transform.position, destinationSetter.target.position) <= 0.2f)
         {
             GetNextWaypoint();
         }
@@ -172,8 +180,11 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                GameObject playerLastSeen = Instantiate(playerLastSeenLocationPrefab, fov.player.transform.position, Quaternion.identity);
+                Destroy(playerLastSeen, 7f);
+
                 //get closer
-                target = fov.player.transform.position;
+                destinationSetter.target = playerLastSeen.transform;
             }
         }
         else
@@ -185,8 +196,11 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                GameObject playerLastSeen = Instantiate(playerLastSeenLocationPrefab, fov.player.transform.position, Quaternion.identity);
+                Destroy(playerLastSeen, 7f);
+
                 //get closer
-                target = fov.player.transform.position;
+                destinationSetter.target = playerLastSeen.transform;
             }
         }
     }
@@ -208,7 +222,7 @@ public class Enemy : MonoBehaviour
         {
             waypointIndex++;
         }
-        target = patrolWaypoints[waypointIndex].position;
+        destinationSetter.target = patrolWaypoints[waypointIndex];
     }
 
     /*public void TakeBullet()
