@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public bool Alert = false;
     
     public float speed;
+    public float rotationSpeed;
     public float fistAttackRange;
 
     public int HP;
@@ -103,6 +104,12 @@ public class Enemy : MonoBehaviour
         {
             Alert = true;
             alertCountdown = alertTimeout;
+            
+            //rotate in direction of player
+            Vector2 lookDir = (Vector2)fov.player.transform.position - rb.position;
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+            rb.rotation = angle;
+            
             //run to player/shoot player
             AttackPlayer();
         }
@@ -170,10 +177,10 @@ public class Enemy : MonoBehaviour
         {
             if (weapon.attackRange > distanceToPlayer)
             {
-                //rotate in direction of player
+                /*//rotate in direction of player
                 Vector2 lookDir = (Vector2)fov.player.transform.position - rb.position;
                 float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-                rb.rotation = angle;
+                rb.rotation = angle;*/
                 
                 //attack with ranged weapon
                 weapon.Attack(transform.rotation.z);
