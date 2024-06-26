@@ -99,6 +99,7 @@ public class Enemy : MonoBehaviour
 
         if (fov.canSeePlayer && !fov.player.GetComponent<Player>().IsDead())
         {
+            lookingAround = false;
             Alert = true;
             alertCountdown = alertTimeout;
             
@@ -115,9 +116,23 @@ public class Enemy : MonoBehaviour
             if (Alert)
             {
                 //run to last location of player
-                
-                //if already there - look around (rotate)
-                if (destinationSetter.target.position == transform.position)
+                if (destinationSetter.target != null)
+                {
+                    //if already there - look around (rotate)
+                    if (Vector2.Distance(destinationSetter.target.position, transform.position) <= 0.2)
+                    {
+                        if (lookingAround)
+                        {
+                        
+                        }
+                        else
+                        {
+                            lookingAround = true;
+                        }
+                        alertCountdown -= Time.deltaTime;
+                    }
+                }
+                else
                 {
                     if (lookingAround)
                     {
@@ -127,24 +142,9 @@ public class Enemy : MonoBehaviour
                     {
                         lookingAround = true;
                     }
-                    
-                    /*if (LookingAround)
-                    {
-                        
-                    }
-                    else
-                    {
-                        LookingAround = true;
-                        
-                    }
-                    
-                    //TODO look around between two points of forward+-90 degrees
-                    float angle1 = rb.rotation + 90;
-                    float angle2 = rb.rotation - 90;
-                    
-                    rotateTo(angle);*/
                     alertCountdown -= Time.deltaTime;
                 }
+                
             }
             
             if (Alert && alertCountdown <= 0)
@@ -212,7 +212,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 GameObject playerLastSeen = Instantiate(playerLastSeenLocationPrefab, fov.player.transform.position, Quaternion.identity);
-                Destroy(playerLastSeen, 40f);
+                Destroy(playerLastSeen, 30f);
 
                 //get closer
                 destinationSetter.target = playerLastSeen.transform;
@@ -228,7 +228,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 GameObject playerLastSeen = Instantiate(playerLastSeenLocationPrefab, fov.player.transform.position, Quaternion.identity);
-                Destroy(playerLastSeen, 40f);
+                Destroy(playerLastSeen, 30f);
 
                 //get closer
                 destinationSetter.target = playerLastSeen.transform;

@@ -404,7 +404,7 @@ MonoBehaviour:
   enableRotation: 1
   autoRepath:
     mode: 1
-    interval: 0.5
+    interval: 1
     sensitivity: 10
     maximumInterval: 2
     visualizeSensitivity: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.6
-  pickNextWaypointDist: 0.1
+  pickNextWaypointDist: 0.5
   endReachedDistance: 0.05
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 0
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5224606671633799068}
-  rotationSpeed: 5
+  rotationSpeed: 0.2
   rb: {fileID: 5224606671633799057}
 --- !u!1 &5224606672109926981
 GameObject:

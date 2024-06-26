@@ -22,6 +22,8 @@ public class LookingAround : MonoBehaviour
     {
         if (enemy.lookingAround)
         {
+            Debug.Log(rb.rotation);
+
             if (propertiesSet)
             {
                 if (Math.Abs(rb.rotation - currentGoal) < 0.01)
@@ -31,18 +33,16 @@ public class LookingAround : MonoBehaviour
                 else
                 {
                     Move();
-                    //TODO
                 }
 
             }
             else
             {
-                angle1 = rb.rotation + 90;
-                angle2 = rb.rotation - 90;
+                angle1 = rb.rotation + 45;
+                angle2 = rb.rotation - 45;
                 currentGoal = angle1;
+                propertiesSet = true;
             }
-            //TODO look around between two points of forward+-90 degrees
-            
         }
         else
         {
@@ -53,11 +53,11 @@ public class LookingAround : MonoBehaviour
 
     private void Move()
     {
-        if (Math.Abs(currentGoal - angle1) < 0.01)
+        if (Math.Abs(currentGoal - angle1) < 0.1)
         {
             rotateTo(rb.rotation + rotationSpeed);
         }
-        else
+        else if (Math.Abs(currentGoal - angle2) < 0.1)
         {
             rotateTo(rb.rotation - rotationSpeed);
         } 
@@ -77,7 +77,7 @@ public class LookingAround : MonoBehaviour
 
     private void rotateTo(float angle)
     {
-        float targetAngle = angle - 90f;
+        float targetAngle = angle/* - 90f*/;
         rb.rotation = targetAngle;
     }
 }
