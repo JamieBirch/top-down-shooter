@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 6260320550928356613}
   - component: {fileID: 2688972774222068441}
   - component: {fileID: 653803166191810546}
+  - component: {fileID: 8469879819327320777}
   m_Layer: 10
   m_Name: enemy
   m_TagString: enemy
@@ -271,6 +272,8 @@ MonoBehaviour:
   stunCountdown: 0
   alertTimeout: 4
   alertCountdown: 0
+  LookingAround: {fileID: 8469879819327320777}
+  lookingAround: 0
   patrolWaypoints: []
   playerLastSeenLocationPrefab: {fileID: 8641668617404842162, guid: ff1a6db621d96fa42a56582d8d69ad80, type: 3}
   defaultEnemyLocationPrefab: {fileID: 8641668617404842162, guid: ff1a6db621d96fa42a56582d8d69ad80, type: 3}
@@ -429,6 +432,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!114 &8469879819327320777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224606671633799069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3095082f5802b1d4ea55ba4d8f2e808e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 5224606671633799068}
+  rotationSpeed: 5
+  rb: {fileID: 5224606671633799057}
 --- !u!1 &5224606672109926981
 GameObject:
   m_ObjectHideFlags: 0
