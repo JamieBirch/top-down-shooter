@@ -116,8 +116,8 @@ public class Player : MonoBehaviour
                 {
                     ThrowWeapon();
                     ChangeSprite(spriteAlive);
-                    currentAnimator = emptyHandsAnimator;
-                    collider_.size = new Vector2(0.7f, 0.4f);
+                    // currentAnimator = emptyHandsAnimator;
+                    collider_.size = new Vector2(1.4f, 0.8f);
                     collider_.offset = new Vector2(0, 0);
                 }
             }
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
         if (weapon.weaponType == WeaponType.pipe)
         {
             ChangeSprite(spritePipe);
-            currentAnimator = pipeAnimator;
+            // currentAnimator = pipeAnimator;
             collider_.size = weapon.colliderSize;
             collider_.offset = weapon.colliderOffset;
             /*collider.size = new Vector2(0.75f, 0.55f);
@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
             }
             
             ChangeSprite(spriteShotgun);
-            currentAnimator = shotgunAnimator;
+            // currentAnimator = shotgunAnimator;
             collider_.size = weapon.colliderSize;
             collider_.offset = weapon.colliderOffset;
             /*collider.size = new Vector2(0.7f, 1f);
@@ -385,6 +385,14 @@ public class Player : MonoBehaviour
         currentSprite.SetActive(false);
         currentSprite = newSprite;
         currentSprite.SetActive(true);
+        if (currentSprite.TryGetComponent(out Animator anim_))
+        {
+            currentAnimator = anim_;
+        }
+        else
+        {
+            currentAnimator = null;
+        }
     }
     
     private void SwitchHands()

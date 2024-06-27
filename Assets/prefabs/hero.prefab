@@ -268,7 +268,7 @@ MonoBehaviour:
   pipeAnimator: {fileID: 527808903}
   shotgunAnimator: {fileID: 405199144}
   rb: {fileID: 1245793998372469496}
-  collider_: {fileID: 0}
+  collider_: {fileID: 1245793998372469499}
   bloodSpotPrefab: {fileID: 6136873832623499859, guid: ba6f91ea22e147442ad46dabea92dcaf, type: 3}
   spriteAlive: {fileID: 1245793999335020032}
   spriteDead: {fileID: 1245793999984346466}
@@ -277,7 +277,7 @@ MonoBehaviour:
   legs: {fileID: 3760843037594805771}
   currentSprite: {fileID: 0}
   deathCanvas: {fileID: 0}
-  weaponPickupRange: 0.5
+  weaponPickupRange: 1.5
   weaponSlot: {fileID: 1245793999276452125}
   fistsAttackRange: 1
   fistsAttackAngle: 90
@@ -352,7 +352,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.4}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!1 &1245793998476052236
 GameObject:
