@@ -257,6 +257,7 @@ MonoBehaviour:
   fov: {fileID: 2857140098249907209}
   rb: {fileID: 5224606671633799057}
   destinationSetter: {fileID: 653803166191810546}
+  aipath: {fileID: 0}
   Alert: 0
   speed: 2
   fistAttackRange: 0.5
@@ -279,6 +280,8 @@ MonoBehaviour:
   defaultEnemyLocationPrefab: {fileID: 8641668617404842162, guid: ff1a6db621d96fa42a56582d8d69ad80, type: 3}
   defaultPosition: {fileID: 0}
   bloodSpotPrefab: {fileID: 0}
+  attackTimeout: 1
+  attackCountdown: 0
 --- !u!50 &5224606671633799057
 Rigidbody2D:
   serializedVersion: 4

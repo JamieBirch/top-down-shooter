@@ -22,7 +22,7 @@ public class LookingAround : MonoBehaviour
     {
         if (enemy.lookingAround)
         {
-            Debug.Log(rb.rotation);
+            // Debug.Log(rb.rotation);
 
             if (propertiesSet)
             {

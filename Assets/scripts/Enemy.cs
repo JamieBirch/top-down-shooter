@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rb;
 
     public AIDestinationSetter destinationSetter;
+    public AIPath aipath;
     
     public bool Alert = false;
     
@@ -47,6 +48,8 @@ public class Enemy : MonoBehaviour
     private int finisherCounter = 0;
     private bool inFinisher = false;
 
+    public float attackTimeout;
+    public float attackCountdown = 0;
     
     private void Start()
     {
@@ -76,6 +79,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        attackCountdown -= Time.deltaTime;
+        
         /*if (HP <= 0)
         {
             Die();
@@ -90,6 +95,7 @@ public class Enemy : MonoBehaviour
         {
             isStunned = false;
             SetSprite(EnemyState.alive);
+            aipath.enabled = true;
         }
         if (isStunned && !inFinisher)
         {
@@ -199,14 +205,10 @@ public class Enemy : MonoBehaviour
         float distanceToPlayer = Vector2.Distance(transform.position, fov.player.transform.position);
         if (weapon != null)
         {
-            if (weapon.attackRange > distanceToPlayer)
+            if (weapon.attackRange > distanceToPlayer && attackCountdown <= 0)
             {
-                /*//rotate in direction of player
-                Vector2 lookDir = (Vector2)fov.player.transform.position - rb.position;
-                float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-                rb.rotation = angle;*/
-                
                 //attack with ranged weapon
+                attackCountdown = attackTimeout;
                 weapon.Attack(rb.rotation);
             }
             else
@@ -221,8 +223,9 @@ public class Enemy : MonoBehaviour
         else
         {
             //attack with fists
-            if (distanceToPlayer <= fistAttackRange)
+            if (distanceToPlayer <= fistAttackRange && attackCountdown <= 0)
             {
+                attackCountdown = attackTimeout;
                 FistAttack();
             }
             else
@@ -287,7 +290,7 @@ public class Enemy : MonoBehaviour
     public void beStunned(float rotation)
     {
         stunCountdown = stunTimeout;
-        
+        aipath.enabled = false;
         if (weapon != null)
         {
             DropWeapon();
@@ -322,6 +325,7 @@ public class Enemy : MonoBehaviour
             return;
         }
         isAlive = false;
+        aipath.enabled = false;
         // Debug.Log("Enemy is Dead");
         SetSprite(EnemyState.dead);
         //TOFIX magic numbers

@@ -274,6 +274,7 @@ MonoBehaviour:
   spriteDead: {fileID: 1245793999984346466}
   spritePipe: {fileID: 527808901}
   spriteShotgun: {fileID: 405199141}
+  legs: {fileID: 3760843037594805771}
   currentSprite: {fileID: 0}
   deathCanvas: {fileID: 0}
   weaponPickupRange: 0.5

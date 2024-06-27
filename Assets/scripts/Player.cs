@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public GameObject spriteDead;
     public GameObject spritePipe;
     public GameObject spriteShotgun;
+    
+    public GameObject legs;
 
     public GameObject currentSprite;
     
@@ -341,6 +343,8 @@ public class Player : MonoBehaviour
     {
         isAlive = false;
         Debug.Log("Player is Dead");
+        
+        legs.SetActive(false);
         ChangeSprite(spriteDead);
         
         deathCanvas.SetActive(true);
