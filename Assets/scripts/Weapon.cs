@@ -24,6 +24,8 @@ public abstract class Weapon : MonoBehaviour
     public Vector2 colliderOffset;
     public Vector2 colliderSize;
     
+    public bool alreadyPickedByPlayer = false;
+    
     // public float weaponKickback;
     
     public abstract void Attack(float rotationZ);
@@ -107,6 +109,7 @@ public abstract class Weapon : MonoBehaviour
     {
         return finisherName;
     }*/
+    public abstract void Reload();
 }
 
 public enum WeaponType

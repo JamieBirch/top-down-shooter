@@ -14,6 +14,7 @@ public class RangedWeapon : Weapon
     public int bulletsCurrent;
     public float bulletForce;
     public float rangedAttackAngle;
+
     
     private void Start()
     {
@@ -41,6 +42,11 @@ public class RangedWeapon : Weapon
     public override int GetBulletCount()
     {
         return bulletsCurrent;
+    }
+
+    public override void Reload()
+    {
+        bulletsCurrent = bulletsMax;
     }
 
     private void Shoot(float rotationZ)

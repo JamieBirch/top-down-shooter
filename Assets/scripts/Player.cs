@@ -148,6 +148,12 @@ public class Player : MonoBehaviour
             collider.offset = new Vector2(0, 0.05f);*/
         } else if (weapon.weaponType == WeaponType.shotgun)
         {
+            if (!weapon.alreadyPickedByPlayer)
+            {
+                weapon.alreadyPickedByPlayer = true;
+                weapon.Reload();
+            }
+            
             ChangeSprite(spriteShotgun);
             currentAnimator = shotgunAnimator;
             collider_.size = weapon.colliderSize;

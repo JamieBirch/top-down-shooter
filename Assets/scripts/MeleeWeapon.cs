@@ -37,6 +37,11 @@ public class MeleeWeapon : Weapon
         return -1;
     }
 
+    public override void Reload()
+    {
+        return;
+    }
+
     private void Hit(float rotationZ)
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
