@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     public GameObject spritePipe;
     public GameObject spriteShotgun;
     
-    private GameObject currentSprite;
+    private GameObject currentSprite = null;
     
     public Rigidbody2D rb;
 
@@ -66,7 +66,6 @@ public class Enemy : MonoBehaviour
     
     private void Start()
     {
-        SetSprite(EnemyState.alive);
         defaultPosition = Instantiate(defaultEnemyLocationPrefab, transform.position, Quaternion.identity).transform; 
         // defaultPosition = transform.position;
         
@@ -103,6 +102,10 @@ public class Enemy : MonoBehaviour
                 /*collider.size = new Vector2(0.7f, 1f);
                 collider.offset = new Vector2(0, 0.4f);*/
             }
+        }
+        else
+        {
+            ChangeSprite(spriteAlive);
         }
     }
 
@@ -467,7 +470,10 @@ public class Enemy : MonoBehaviour
     
     private void ChangeSprite(GameObject newSprite)
     {
-        currentSprite.SetActive(false);
+        if (currentSprite != null)
+        {
+            currentSprite.SetActive(false);
+        }
         currentSprite = newSprite;
         currentSprite.SetActive(true);
         if (currentSprite.TryGetComponent(out Animator anim_))
