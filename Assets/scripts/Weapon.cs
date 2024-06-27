@@ -69,13 +69,10 @@ public abstract class Weapon : MonoBehaviour
 
     public void PickUp()
     {
-        SoundManager.PlaySound(SoundManager.Sound.pickup_weapon);
         
         isHeld = true;
         OnGround = false;
         sprite.SetActive(false);
-        
-        
     }
     
     public bool IsHeld()

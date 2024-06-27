@@ -169,6 +169,7 @@ public class Player : MonoBehaviour
         weapon.transform.rotation = new Quaternion(0,0,0, 0);
         
         heldWeapon.PickUp();
+        SoundManager.PlaySound(SoundManager.Sound.pickup_weapon);
     }
 
     private bool StandingNearWeapon(out Weapon weaponComponent)

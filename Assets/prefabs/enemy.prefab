@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 2680897686020882145}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5224606671633799059}
@@ -141,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 5224606671012023959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5224606671633799059}
@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 5224606671633799069}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5224606672109926980}
@@ -279,7 +279,7 @@ MonoBehaviour:
   playerLastSeenLocationPrefab: {fileID: 8641668617404842162, guid: ff1a6db621d96fa42a56582d8d69ad80, type: 3}
   defaultEnemyLocationPrefab: {fileID: 8641668617404842162, guid: ff1a6db621d96fa42a56582d8d69ad80, type: 3}
   defaultPosition: {fileID: 0}
-  bloodSpotPrefab: {fileID: 0}
+  bloodSpotPrefab: {fileID: 6136873832623499859, guid: ba6f91ea22e147442ad46dabea92dcaf, type: 3}
   attackTimeout: 1
   attackCountdown: 0
 --- !u!50 &5224606671633799057
@@ -476,7 +476,7 @@ Transform:
   m_GameObject: {fileID: 5224606672109926981}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5224606671633799059}

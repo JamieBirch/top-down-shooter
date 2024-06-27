@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 653803166191810546, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1554055354772715478, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -35,10 +39,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2688972774222068441, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2772213298774759782, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1517961066, guid: fdaf9325d5b99b345a7382a6b687b956, type: 3}
+    - target: {fileID: 2857140098249907209, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5203304947355956834, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -163,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2136792652, guid: 9940f7a8cd206f54d8b1fa9709d279c8, type: 3}
+    - target: {fileID: 8469879819327320777, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5224606671633799068, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea610d5271fa3144ab980bcc13f4b30b, type: 3}
@@ -172,7 +188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2163980825256284655}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6235665853769451122}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67a7be005008dfe4e83af5dfc2504ed7, type: 3}
   m_Name: 
@@ -211,21 +227,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fov: {fileID: 4156427527169871334}
   rb: {fileID: 6235665853769451134}
+  destinationSetter: {fileID: 0}
+  aipath: {fileID: 0}
+  Alert: 0
   speed: 2
   fistAttackRange: 0.5
   HP: 5
   spriteAlive: {fileID: 6235665852966316970}
   spriteStunned: {fileID: 4268417550462267150}
   spriteDead: {fileID: 6235665854087208824}
-  collider: {fileID: 6235665853769451133}
+  collider_: {fileID: 6235665853769451133}
   weaponSlot: {fileID: 4431182405271427214}
   weaponPrefab: {fileID: 0}
   weapon: {fileID: 0}
   stunTimeout: 3
   stunCountdown: 0
+  alertTimeout: 0
+  alertCountdown: 0
+  LookingAround: {fileID: 0}
+  lookingAround: 0
   patrolWaypoints: []
+  playerLastSeenLocationPrefab: {fileID: 0}
+  defaultEnemyLocationPrefab: {fileID: 0}
   defaultPosition: {fileID: 0}
   bloodSpotPrefab: {fileID: 6136873832623499859, guid: ba6f91ea22e147442ad46dabea92dcaf, type: 3}
+  attackTimeout: 0
+  attackCountdown: 0
   soundObject: {fileID: 0}
 --- !u!61 &6235665853769451133 stripped
 BoxCollider2D:
