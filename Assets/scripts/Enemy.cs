@@ -5,6 +5,21 @@ using UnityEngine.Serialization;
 public class Enemy : MonoBehaviour
 {
     public FieldOfView fov;
+
+    // public Animator EmptyHandsAnimator;
+    // public Animator PipeAnimator;
+    // public Animator ShotgunAnimator;
+    
+    private Animator currentAnimator;
+    
+    public GameObject spriteAlive;
+    public GameObject spriteStunned;
+    public GameObject spriteDead;
+    public GameObject spritePipe;
+    public GameObject spriteShotgun;
+    
+    private GameObject currentSprite;
+    
     public Rigidbody2D rb;
 
     public AIDestinationSetter destinationSetter;
@@ -18,9 +33,7 @@ public class Enemy : MonoBehaviour
     public int HP;
     private bool isAlive = true;
     private bool isStunned = false;
-    public GameObject spriteAlive;
-    public GameObject spriteStunned;
-    public GameObject spriteDead;
+
     [FormerlySerializedAs("collider")] public BoxCollider2D collider_;
 
     public GameObject weaponSlot;
@@ -72,6 +85,24 @@ public class Enemy : MonoBehaviour
             weapon = instantiatedWeapon.GetComponent<Weapon>();
             weapon.PickUp();
             weapon.rb.simulated = false;
+            
+            if (weapon.weaponType == WeaponType.pipe)
+            {
+                ChangeSprite(spritePipe);
+                // currentAnimator = pipeAnimator;
+                collider_.size = weapon.colliderSize;
+                collider_.offset = weapon.colliderOffset;
+                /*collider.size = new Vector2(0.75f, 0.55f);
+                collider.offset = new Vector2(0, 0.05f);*/
+            } else if (weapon.weaponType == WeaponType.shotgun)
+            {
+                ChangeSprite(spriteShotgun);
+                // currentAnimator = shotgunAnimator;
+                collider_.size = weapon.colliderSize;
+                collider_.offset = weapon.colliderOffset;
+                /*collider.size = new Vector2(0.7f, 1f);
+                collider.offset = new Vector2(0, 0.4f);*/
+            }
         }
     }
 
@@ -209,6 +240,7 @@ public class Enemy : MonoBehaviour
             {
                 //attack with ranged weapon
                 attackCountdown = attackTimeout;
+                currentAnimator.SetTrigger("attack");
                 weapon.Attack(rb.rotation);
             }
             else
@@ -241,7 +273,7 @@ public class Enemy : MonoBehaviour
 
     private void FistAttack()
     {
-        //TODO
+        currentAnimator.SetTrigger("punch");
         Debug.Log("enemy attacks with fists");
         fov.player.GetComponent<Player>().GetHit();
     }
@@ -431,5 +463,20 @@ public class Enemy : MonoBehaviour
     public void StartFinisher()
     {
         inFinisher = true;
+    }
+    
+    private void ChangeSprite(GameObject newSprite)
+    {
+        currentSprite.SetActive(false);
+        currentSprite = newSprite;
+        currentSprite.SetActive(true);
+        if (currentSprite.TryGetComponent(out Animator anim_))
+        {
+            currentAnimator = anim_;
+        }
+        else
+        {
+            currentAnimator = null;
+        }
     }
 }

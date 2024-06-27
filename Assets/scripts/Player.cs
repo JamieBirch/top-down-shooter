@@ -5,8 +5,8 @@ using UnityEngine.Serialization;
 public class Player : MonoBehaviour
 {
     [FormerlySerializedAs("animator")] public Animator emptyHandsAnimator;
-    public Animator pipeAnimator;
-    public Animator shotgunAnimator;
+    // public Animator pipeAnimator;
+    // public Animator shotgunAnimator;
 
     private Animator currentAnimator;
     
