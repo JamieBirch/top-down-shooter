@@ -124,18 +124,27 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+
+        if (isStunned)
+        {
+            if (stunCountdown <= 0)
+            {
+                isStunned = false;
+                SetSprite(EnemyState.alive);
+                EnableMonement();
+            }
+            if (!inFinisher)
+            {
+                stunCountdown -= Time.deltaTime;
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
         
-        if (isStunned && stunCountdown <= 0)
-        {
-            isStunned = false;
-            SetSprite(EnemyState.alive);
-            EnableMonement();
-        }
-        if (isStunned && !inFinisher)
-        {
-            stunCountdown -= Time.deltaTime;
-            return;
-        }
+        
 
         if (fov.canSeePlayer && !fov.player.GetComponent<Player>().IsDead())
         {
