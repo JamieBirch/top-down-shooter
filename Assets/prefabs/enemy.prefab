@@ -372,7 +372,7 @@ MonoBehaviour:
   aipath: {fileID: 2688972774222068441}
   Alert: 0
   speed: 2
-  fistAttackRange: 1.5
+  fistAttackRange: 0.5
   HP: 5
   collider_: {fileID: 5224606671633799058}
   weaponSlot: {fileID: 2555434296051648865}

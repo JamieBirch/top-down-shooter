@@ -95,6 +95,7 @@ public class Enemy : MonoBehaviour
             }
             else if (weapon.weaponType == WeaponType.shotgun)
             {
+                weapon.Reload();
                 ChangeSprite(spriteShotgun);
                 collider_.size = weapon.colliderSize;
                 collider_.offset = weapon.colliderOffset;
@@ -294,6 +295,7 @@ public class Enemy : MonoBehaviour
         currentAnimator.SetTrigger("punch");
         Debug.Log("enemy attacks with fists");
         fov.player.GetComponent<Player>().GetHit();
+        SoundManager.PlaySound(SoundManager.Sound.fist_hit);
     }
 
     private void GetNextWaypoint()
