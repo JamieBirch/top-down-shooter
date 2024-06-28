@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,6 +43,11 @@ public class SoundManager : MonoBehaviour
                 soundsDictionary.Add(soundAudioClip.sound, soundAudioClip.audioClip);
             }
         }
+    }
+
+    private void Start()
+    {
+        PlaySoundTrack();
     }
 
     public static void PlaySound(Sound sound)

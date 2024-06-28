@@ -26,7 +26,7 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.PlaySoundTrack();
+        /*SoundManager.PlaySoundTrack();*/
         
         instructions.Add(0, "WASD to move");
         instructions.Add(1, "врежь ему!");
