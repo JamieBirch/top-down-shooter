@@ -63,8 +63,13 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         currentSprite = spriteAlive;
-        defaultPosition = Instantiate(defaultEnemyLocationPrefab, transform.position, Quaternion.identity).transform; 
-        
+        InitialSetup();
+    }
+
+    public virtual void InitialSetup()
+    {
+        defaultPosition = Instantiate(defaultEnemyLocationPrefab, transform.position, Quaternion.identity).transform;
+
         if (patrolWaypoints.Length != 0)
         {
             destinationSetter.target = patrolWaypoints[0];
@@ -76,17 +81,19 @@ public class Enemy : MonoBehaviour
 
         if (weaponPrefab != null)
         {
-            GameObject instantiatedWeapon = Instantiate(weaponPrefab, weaponSlot.transform.position, new Quaternion(0,0,180, 0), weaponSlot.transform);
+            GameObject instantiatedWeapon = Instantiate(weaponPrefab, weaponSlot.transform.position,
+                new Quaternion(0, 0, 180, 0), weaponSlot.transform);
             weapon = instantiatedWeapon.GetComponent<Weapon>();
             weapon.PickUp();
             weapon.rb.simulated = false;
-            
+
             if (weapon.weaponType == WeaponType.pipe)
             {
                 ChangeSprite(spritePipe);
                 collider_.size = weapon.colliderSize;
                 collider_.offset = weapon.colliderOffset;
-            } else if (weapon.weaponType == WeaponType.shotgun)
+            }
+            else if (weapon.weaponType == WeaponType.shotgun)
             {
                 ChangeSprite(spriteShotgun);
                 collider_.size = weapon.colliderSize;

@@ -5,11 +5,11 @@ public class TutorialEnemy : Enemy
 {
     public GameObject soundObject;
 
-    private void Start()
+    public override void InitialSetup()
     {
         
     }
-    
+
     public override void Voice()
     {
         soundObject = SoundManager.PlayLoopedSound(SoundManager.Sound.enemy_mumble);

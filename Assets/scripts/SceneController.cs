@@ -7,6 +7,11 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial");
     }
+    
+    public void StartLevel1()
+    {
+        SceneManager.LoadScene("Lvl1");
+    }
 
     public void Continue()
     {
