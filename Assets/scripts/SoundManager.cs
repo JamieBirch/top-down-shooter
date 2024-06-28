@@ -34,10 +34,13 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
         }
-        
-        foreach (SoundAudioClip soundAudioClip in soundAudioClips)
+
+        if (soundsDictionary.Count == 0)
         {
-            soundsDictionary.Add(soundAudioClip.sound, soundAudioClip.audioClip);
+            foreach (SoundAudioClip soundAudioClip in soundAudioClips)
+            {
+                soundsDictionary.Add(soundAudioClip.sound, soundAudioClip.audioClip);
+            }
         }
     }
 
@@ -49,7 +52,7 @@ public class SoundManager : MonoBehaviour
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
             audioSource.PlayOneShot(soundsDictionary[sound]);
-            
+            Destroy(soundGameObject, 5f);
             Debug.Log("making sound: " + sound);
         }
     }
