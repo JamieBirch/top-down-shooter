@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 2680897686020882145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5224606671633799059}
@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 4157607143367454665}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5224606671633799059}
@@ -246,7 +246,7 @@ Transform:
   m_GameObject: {fileID: 5224606671012023959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5224606671633799059}
@@ -369,7 +369,7 @@ MonoBehaviour:
   spriteShotgun: {fileID: 4157607143367454665}
   rb: {fileID: 5224606671633799057}
   destinationSetter: {fileID: 653803166191810546}
-  aipath: {fileID: 0}
+  aipath: {fileID: 2688972774222068441}
   Alert: 0
   speed: 2
   fistAttackRange: 1.5
@@ -586,7 +586,7 @@ Transform:
   m_GameObject: {fileID: 5224606672109926981}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5224606671633799059}
@@ -691,7 +691,7 @@ Transform:
   m_GameObject: {fileID: 5944752900012370534}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5224606671633799059}

@@ -6,10 +6,6 @@ public class Enemy : MonoBehaviour
 {
     public FieldOfView fov;
 
-    // public Animator EmptyHandsAnimator;
-    // public Animator PipeAnimator;
-    // public Animator ShotgunAnimator;
-    
     private Animator currentAnimator;
     
     public GameObject spriteAlive;
@@ -66,8 +62,8 @@ public class Enemy : MonoBehaviour
     
     private void Start()
     {
+        currentSprite = spriteAlive;
         defaultPosition = Instantiate(defaultEnemyLocationPrefab, transform.position, Quaternion.identity).transform; 
-        // defaultPosition = transform.position;
         
         if (patrolWaypoints.Length != 0)
         {
@@ -88,19 +84,13 @@ public class Enemy : MonoBehaviour
             if (weapon.weaponType == WeaponType.pipe)
             {
                 ChangeSprite(spritePipe);
-                // currentAnimator = pipeAnimator;
                 collider_.size = weapon.colliderSize;
                 collider_.offset = weapon.colliderOffset;
-                /*collider.size = new Vector2(0.75f, 0.55f);
-                collider.offset = new Vector2(0, 0.05f);*/
             } else if (weapon.weaponType == WeaponType.shotgun)
             {
                 ChangeSprite(spriteShotgun);
-                // currentAnimator = shotgunAnimator;
                 collider_.size = weapon.colliderSize;
                 collider_.offset = weapon.colliderOffset;
-                /*collider.size = new Vector2(0.7f, 1f);
-                collider.offset = new Vector2(0, 0.4f);*/
             }
         }
         else
@@ -130,7 +120,7 @@ public class Enemy : MonoBehaviour
             if (stunCountdown <= 0)
             {
                 isStunned = false;
-                SetSprite(EnemyState.alive);
+                ChangeSprite(spriteAlive);
                 EnableMonement();
             }
             if (!inFinisher)
@@ -231,6 +221,7 @@ public class Enemy : MonoBehaviour
 
     private void EnableMonement()
     {
+        Debug.Log("enable movement");
         if (aipath != null)
         {
             aipath.enabled = true;
@@ -342,7 +333,7 @@ public class Enemy : MonoBehaviour
     public void beStunned(float rotation)
     {
         stunCountdown = stunTimeout;
-        StopMovement();
+        DisableMovement();
         
         if (weapon != null)
         {
@@ -350,12 +341,13 @@ public class Enemy : MonoBehaviour
         }
         
         isStunned = true;
-        SetSprite(EnemyState.stunned);
+        ChangeSprite(spriteStunned);
         RotateSprite(rotation);
     }
 
-    private void StopMovement()
+    private void DisableMovement()
     {
+        Debug.Log("disable movement");
         if (aipath != null)
         {
             aipath.enabled = false;
@@ -386,9 +378,9 @@ public class Enemy : MonoBehaviour
             return;
         }
         isAlive = false;
-        StopMovement();
+        DisableMovement();
         // Debug.Log("Enemy is Dead");
-        SetSprite(EnemyState.dead);
+        ChangeSprite(spriteDead);
         //TOFIX magic numbers
         if (rotation != 1000f)
         {
@@ -431,41 +423,6 @@ public class Enemy : MonoBehaviour
     public bool IsStunned()
     {
         return isStunned;
-    }
-
-    private void SetSprite(EnemyState enemyState)
-    {
-        switch (enemyState)
-        {
-            case EnemyState.alive:
-            {
-                spriteAlive.SetActive(true);
-                spriteStunned.SetActive(false);
-                spriteDead.SetActive(false);
-                break;
-            }
-            case EnemyState.stunned:
-            {
-                spriteAlive.SetActive(false);
-                spriteStunned.SetActive(true);
-                spriteDead.SetActive(false);
-                break;
-            }
-            case EnemyState.dead:
-            {
-                spriteAlive.SetActive(false);
-                spriteStunned.SetActive(false);
-                spriteDead.SetActive(true);
-                break;
-            }
-        }
-    }
-
-    enum EnemyState
-    {
-        alive,
-        stunned,
-        dead
     }
 
     public void DeathByThrownWeapon(float rotation)
