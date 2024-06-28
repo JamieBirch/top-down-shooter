@@ -226,6 +226,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fov: {fileID: 4156427527169871334}
+  spriteAlive: {fileID: 6235665852966316970}
+  spriteStunned: {fileID: 4268417550462267150}
+  spriteDead: {fileID: 6235665854087208824}
+  spritePipe: {fileID: 0}
+  spriteShotgun: {fileID: 0}
   rb: {fileID: 6235665853769451134}
   destinationSetter: {fileID: 0}
   aipath: {fileID: 0}
@@ -233,9 +238,6 @@ MonoBehaviour:
   speed: 2
   fistAttackRange: 0.5
   HP: 5
-  spriteAlive: {fileID: 6235665852966316970}
-  spriteStunned: {fileID: 4268417550462267150}
-  spriteDead: {fileID: 6235665854087208824}
   collider_: {fileID: 6235665853769451133}
   weaponSlot: {fileID: 4431182405271427214}
   weaponPrefab: {fileID: 0}

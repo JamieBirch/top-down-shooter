@@ -4,6 +4,11 @@ using UnityEngine;
 public class TutorialEnemy : Enemy
 {
     public GameObject soundObject;
+
+    private void Start()
+    {
+        
+    }
     
     public override void Voice()
     {

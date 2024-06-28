@@ -1377,6 +1377,10 @@ PrefabInstance:
       propertyPath: deathCanvas
       value: 
       objectReference: {fileID: 1148882959}
+    - target: {fileID: 1245793998372469495, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
+      propertyPath: fistsAttackRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1245793998372469496, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
       propertyPath: m_BodyType
       value: 0
@@ -1451,15 +1455,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245793999335020033, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1245793999335020033, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1245793999335020033, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ad8c51ac37c7e4489ae40bf3a9b4401, type: 3}

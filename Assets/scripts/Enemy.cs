@@ -129,7 +129,7 @@ public class Enemy : MonoBehaviour
         {
             isStunned = false;
             SetSprite(EnemyState.alive);
-            aipath.enabled = true;
+            EnableMonement();
         }
         if (isStunned && !inFinisher)
         {
@@ -218,6 +218,14 @@ public class Enemy : MonoBehaviour
             Vector3 dir = destinationSetter.target.position - transform.position;
             transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
         }*/
+    }
+
+    private void EnableMonement()
+    {
+        if (aipath != null)
+        {
+            aipath.enabled = true;
+        }
     }
 
     private void rotateTo(float angle)
@@ -325,7 +333,8 @@ public class Enemy : MonoBehaviour
     public void beStunned(float rotation)
     {
         stunCountdown = stunTimeout;
-        aipath.enabled = false;
+        StopMovement();
+        
         if (weapon != null)
         {
             DropWeapon();
@@ -335,7 +344,15 @@ public class Enemy : MonoBehaviour
         SetSprite(EnemyState.stunned);
         RotateSprite(rotation);
     }
-    
+
+    private void StopMovement()
+    {
+        if (aipath != null)
+        {
+            aipath.enabled = false;
+        }
+    }
+
     private void DropWeapon()
     {
         //TODO: test
@@ -360,7 +377,7 @@ public class Enemy : MonoBehaviour
             return;
         }
         isAlive = false;
-        aipath.enabled = false;
+        StopMovement();
         // Debug.Log("Enemy is Dead");
         SetSprite(EnemyState.dead);
         //TOFIX magic numbers
