@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class LookingAround : MonoBehaviour
 {
@@ -26,6 +23,7 @@ public class LookingAround : MonoBehaviour
 
             if (propertiesSet)
             {
+                // Debug.Log(Math.Abs(rb.rotation - currentGoal));
                 if (Math.Abs(rb.rotation - currentGoal) < 0.01)
                 {
                     SwitchGoals();
@@ -77,7 +75,6 @@ public class LookingAround : MonoBehaviour
 
     private void rotateTo(float angle)
     {
-        float targetAngle = angle/* - 90f*/;
-        rb.rotation = targetAngle;
+        rb.rotation = angle;
     }
 }
