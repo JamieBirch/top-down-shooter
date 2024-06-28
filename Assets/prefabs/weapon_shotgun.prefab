@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7085511465300950888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 0.669, z: 0}
+  m_LocalPosition: {x: 0.06, y: 1.044, z: 0}
   m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,7 +184,7 @@ MonoBehaviour:
     m_Bits: 1024
   shootingPoint: {fileID: 7085511465300950895}
   bulletPrefab: {fileID: 3701039938720068354, guid: c7867b1a85fcd5b47a128dcace0e2698, type: 3}
-  partsShotAtOnce: 20
+  partsShotAtOnce: 10
   bulletsMax: 5
   bulletsCurrent: 0
   bulletForce: 10

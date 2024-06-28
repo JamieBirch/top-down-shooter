@@ -23,7 +23,6 @@ public class CursorManager : MonoBehaviour
             frameTimer += frameRate;
             currentFrame = (currentFrame + 1) % frameCount;
             Cursor.SetCursor(cursorTexture[currentFrame], new Vector2(8, 8), CursorMode.Auto);
-            Debug.Log(currentFrame);
         }
     }
 }

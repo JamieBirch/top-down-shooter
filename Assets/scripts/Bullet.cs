@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
         }
 
         //TODO figure out bullets movement
-        if (/*colGameObject.CompareTag("Player") || */colGameObject.CompareTag("enemy"))
+        if (colGameObject.CompareTag("Player") || colGameObject.CompareTag("enemy"))
         {
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
 
