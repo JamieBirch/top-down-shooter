@@ -265,8 +265,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emptyHandsAnimator: {fileID: 1286460428}
-  pipeAnimator: {fileID: 527808903}
-  shotgunAnimator: {fileID: 405199144}
   rb: {fileID: 1245793998372469496}
   collider_: {fileID: 1245793998372469499}
   bloodSpotPrefab: {fileID: 6136873832623499859, guid: ba6f91ea22e147442ad46dabea92dcaf, type: 3}
@@ -352,7 +350,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
 --- !u!1 &1245793998476052236
 GameObject:
