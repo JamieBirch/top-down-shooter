@@ -372,7 +372,7 @@ MonoBehaviour:
   aipath: {fileID: 0}
   Alert: 0
   speed: 2
-  fistAttackRange: 0.5
+  fistAttackRange: 1.5
   HP: 5
   collider_: {fileID: 5224606671633799058}
   weaponSlot: {fileID: 2555434296051648865}
@@ -425,7 +425,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.03}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -436,7 +436,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.61, y: 0.71}
+  m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
 --- !u!114 &2857140098249907209
 MonoBehaviour:
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.5
+  radius: 1
   height: 1
   canMove: 1
   maxSpeed: 3
