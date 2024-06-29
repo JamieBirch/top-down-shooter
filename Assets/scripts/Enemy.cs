@@ -343,6 +343,7 @@ public class Enemy : MonoBehaviour
     {
         stunCountdown = stunTimeout;
         DisableMovement();
+        lookingAround = false;
         
         if (weapon != null)
         {
@@ -387,6 +388,7 @@ public class Enemy : MonoBehaviour
             return;
         }
         isAlive = false;
+        lookingAround = false;
         DisableMovement();
         // Debug.Log("Enemy is Dead");
         ChangeSprite(spriteDead);
