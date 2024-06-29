@@ -97,11 +97,12 @@ public class RangedWeapon : Weapon
 
         for (int i = 0; i < partsShotAtOnce; i++)
         {
+            float bulletDistribution = 0.01f;
             Vector3 spread = new Vector3(Random.Range(-rangedAttackAngle/2, rangedAttackAngle/2), 0,0);
-            GameObject projectile = Instantiate(bulletPrefab, shootingPoint.position + (spread * 0.01f), shootingPoint.rotation);
+            GameObject projectile = Instantiate(bulletPrefab, shootingPoint.position + (spread * bulletDistribution), shootingPoint.rotation);
             projectile.GetComponent<Rigidbody2D>()
                 // .AddForce(bulletForce * (shootingPoint.up + Random.Range(-rangedAttackAngle/2, rangedAttackAngle/2)) /*+ (100 * shootingPoint.right * spread.x)*/, ForceMode2D.Impulse);
-                .AddForce(bulletForce * (shootingPoint.up + shootingPoint.transform.right * Random.Range(-rangedAttackAngle/8, rangedAttackAngle/8)) /*+ (100 * shootingPoint.right * spread.x)*/, ForceMode2D.Impulse);
+                .AddForce(bulletForce * (shootingPoint.up + shootingPoint.right * Random.Range(-rangedAttackAngle* bulletDistribution, rangedAttackAngle* bulletDistribution)) /*+ (100 * shootingPoint.right * spread.x)*/, ForceMode2D.Impulse);
             // projectile.GetComponent<Rigidbody>().AddForce((100 * shootingPoint.up * (bulletForce + Random.Range(0, spread.x))) + (100 * shootingPoint.transform.right * spread.x));
             Destroy(projectile, 1f);
         }
