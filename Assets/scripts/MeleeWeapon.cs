@@ -9,7 +9,7 @@ public class MeleeWeapon : Weapon
     // public GameObject hitEffect;
     public bool killsWhenThrown = false;
 
-    public override void Attack(float rotationZ)
+    public override void Attack(float rotationZ, bool spendBullets)
     {
         Hit(rotationZ);
     }

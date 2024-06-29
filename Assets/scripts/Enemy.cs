@@ -260,7 +260,7 @@ public class Enemy : MonoBehaviour
                 //attack with ranged weapon
                 attackCountdown = attackTimeout;
                 currentAnimator.SetTrigger("attack");
-                weapon.Attack(rb.rotation);
+                weapon.Attack(rb.rotation, false);
             }
             else
             {

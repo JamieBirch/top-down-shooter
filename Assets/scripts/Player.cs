@@ -203,7 +203,7 @@ public class Player : MonoBehaviour
     {
         if (HoldsWeapon())
         {
-            heldWeapon.Attack(rb.rotation);
+            heldWeapon.Attack(rb.rotation, true);
             
             if (activeHandRight)
             {

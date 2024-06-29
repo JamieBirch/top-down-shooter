@@ -21,12 +21,15 @@ public class RangedWeapon : Weapon
         bulletsCurrent = bulletsMax;
     }
 
-    public override void Attack(float rotationZ)
+    public override void Attack(float rotationZ, bool spendBullets)
     {
         if (bulletsCurrent > 0)
         {
             Shoot(rotationZ);
-            bulletsCurrent--;
+            if (spendBullets)
+            {
+                bulletsCurrent--;
+            }
         }
         else
         {
